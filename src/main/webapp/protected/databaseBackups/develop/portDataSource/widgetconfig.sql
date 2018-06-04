@@ -1,0 +1,15 @@
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('homepage',0,'content_viewer',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',2,'FSI_Toplink_Personal_Placeholder',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',3,'FSI_Toplink_Small_Business_Placeholder',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',4,'FSI_Toplink_Account_Placeholder',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',5,'FSI_Toplink_Logout',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',6,'fsi',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('landing',7,'FSI_Footer',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',2,'FSI_Toplink_Small_Business_Placeholder',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',3,'FSI_Toplink_Account_Placeholder',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',4,'FSI_Toplink_Customer_Internal',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',5,'FSI_Toplink_Logout',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',7,'fsi-greeting',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',8,'monthly-income-greeting',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',11,'home_page_cards',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home',13,'FSI_Footer',NULL);

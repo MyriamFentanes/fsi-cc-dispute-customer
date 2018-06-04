@@ -129,7 +129,7 @@
         <entando.version>5.0.0</entando.version>
         <spring.version>5.0.5.RELEASE</spring.version>
         <struts2.version>2.5.10.1</struts2.version>
-        <cxf.version>2.7.14</cxf.version>
+        <cxf.version>3.0.4</cxf.version>
     </properties>
     <build>
         <finalName>fsi-credit-card-dispute-customer</finalName>
@@ -916,7 +916,12 @@
             <artifactId>json</artifactId>
             <version>20170516</version>
             <type>jar</type>
-
+        </dependency>
+       <dependency>
+            <groupId>org.entando.entando.bundles.app-view</groupId>
+            <artifactId>entando-app-view-cms-default</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
         </dependency>
     </dependencies>
 </project>
