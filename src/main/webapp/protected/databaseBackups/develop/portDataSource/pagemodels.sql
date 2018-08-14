@@ -472,7 +472,25 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
                 line-height: 22px;
                 text-transform: uppercase;
             }
+             .whitean{
+             color: white;
+                 
+             }
+             .whitean :hover{
+             color: white;
+                 
+             } 
+             .whitean :active{
+             color: white;
+                 
+             }
         </style>
+<script>
+  window.onload=function(){
+	var current=window.location.host;
+	$("a#homelogo").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/");
+}
+</script> 
     </head>
     <body>
         <div id="wrapper">
@@ -488,8 +506,10 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
                         </button>
                         <div class="logo-names">
                             <wp:show frame="0" />
+                            <a id="homelogo"  class="whitean" href="" >
                             <img alt="image" class="" src="/fsi-credit-card-dispute-customer/resources/static/img/shield-logo.png">&nbsp;
                             <b>FORTRESS - Bank Loan</b>
+                            </a>
                         </div>
                     </div>
 

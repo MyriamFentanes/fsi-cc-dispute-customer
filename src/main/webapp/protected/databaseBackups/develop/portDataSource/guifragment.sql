@@ -1799,10 +1799,10 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto);
  </style>
-<link rel="stylesheet" href="<@wp.resourceURL />static/static/css/main.45630933.css" rel="stylesheet">
+<link rel="stylesheet" href="<@wp.resourceURL />static/static/css/main.css" rel="stylesheet">
 <div id="fsi-demo-customer"></div>
 
-<script type="text/javascript" src="<@wp.resourceURL />static/static/js/main.ebe0919a.js"></script>
+<script type="text/javascript" src="<@wp.resourceURL />static/static/js/main.js"></script>
 <script>console.log(window.location.host)</script>
 
 
@@ -1880,7 +1880,7 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <script>
   window.onload=function(){
 	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/preview/en/landing");
+	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing.page");
 }
 </script> 
 <a  id="gopage" class="blackan" href="">        
@@ -1925,7 +1925,7 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <script>
   window.onload=function(){
 	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/preview/en/landing");
+	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing.page");
 }
 </script> 
 <a  id="gopage" class="blackan" href="">   
