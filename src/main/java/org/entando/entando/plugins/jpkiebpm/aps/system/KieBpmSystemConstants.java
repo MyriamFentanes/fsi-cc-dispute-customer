@@ -69,7 +69,14 @@ public interface KieBpmSystemConstants {
     public final static String API_GET_CONTAINERS_LIST = "API_GET_CONTAINERS_LIST";
     public final static String API_GET_PROCESS_DEFINITIONS_LIST = "API_GET_PROCESS_DEFINITIONS_LIST";
     public final static String API_GET_PROCESS_INSTANCES_LIST = "API_GET_PROCESS_INSTANCES_LIST";
+
     public final static String API_GET_HUMAN_TASK_LIST = "API_GET_HUMAN_TASK_LIST";
+    public final static String API_GET_HUMAN_TASK_LIST_ADMIN = "API_GET_HUMAN_TASK_LIST_ADMIN";
+    public final static String API_PUT_HUMAN_TASK_START = "API_PUT_HUMAN_TASK_START";
+    public final static String API_PUT_HUMAN_TASK_OUTPUT = "API_PUT_HUMAN_TASK_OUTPUT";
+    public final static String API_PUT_HUMAN_TASK_COMPLETE = "API_PUT_HUMAN_TASK_COMPLETE";
+    public final static String API_GET_HUMAN_TASK_DETAILS = "API_GET_HUMAN_TASK_DETAILS";
+
     public final static String API_GET_TASK_FORM_DEFINITION = "API_GET_TASK_FORM_DEFINITION";
     public final static String API_GET_PROCESS_DEFINITION = "API_GET_PROCESS_DEFINITION";
     public final static String API_POST_PROCESS_START = "API_POST_PROCESS_START";

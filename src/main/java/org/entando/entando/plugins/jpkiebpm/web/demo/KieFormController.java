@@ -26,6 +26,7 @@ package org.entando.entando.plugins.jpkiebpm.web.demo;
 import org.apache.commons.io.IOUtils;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.IKieFormService;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +63,7 @@ public class KieFormController {
     public @ResponseBody
     Map<String, Object> runAdditionalInfoRules(@PathVariable String container, HttpServletRequest request) throws IOException {
         String json = IOUtils.toString(request.getInputStream());
-        logger.info("Run additional info rules request json {} ",json);
+        logger.info("Run additional info rules request json {} ", json);
         String response = this.getKieFormService().runAdditionalInfoRules(json, container);
 
         JSONObject jsonObj = new JSONObject(response);
@@ -72,8 +73,8 @@ public class KieFormController {
     @RequestMapping(value = "/kiebpm/startCase/{container:.+}/{instance:.+}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> executeStartCase(@PathVariable String container, @PathVariable String instance, HttpServletRequest request) throws IOException {
         String json = IOUtils.toString(request.getInputStream());
-        logger.info("Start case request json {}" ,json);
-        String caseId =  this.getKieFormService().executeStartCase(json, container, instance);
+        logger.info("Start case request json {}", json);
+        String caseId = this.getKieFormService().executeStartCase(json, container, instance);
 
         Map<String, String> caseMap = new HashMap<>();
         caseMap.put("caseId", caseId.replace("\"", ""));
@@ -88,7 +89,30 @@ public class KieFormController {
 
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getAllCases(@PathVariable String container) {
-        JSONObject response =  this.getKieFormService().getAllCases(container);
+        JSONObject response = this.getKieFormService().getAllCases(container);
         return response.toMap();
+    }
+
+    @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getAllTasks() {
+        JSONArray response = this.getKieFormService().getAllActiveHumanTasks();
+        return response.toString();
+    }
+
+    @RequestMapping(value = "/kiebpm/completetask/{container:.+}/{taskid:.+}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String completeTask(@PathVariable String container, @PathVariable String taskid, HttpServletRequest request) throws IOException {
+
+        String json = IOUtils.toString(request.getInputStream());
+        logger.info("Complete task request json {}", json);
+        String response = this.getKieFormService().completeTask(json, container, taskid);
+
+        return response;
+    }
+
+    @RequestMapping(value = "/kiebpm/taskdetail/{taskid:.+}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getTaskDetail(@PathVariable String taskid) {
+
+        String response = this.getKieFormService().getTaskDetails(taskid);
+        return response;
     }
 }

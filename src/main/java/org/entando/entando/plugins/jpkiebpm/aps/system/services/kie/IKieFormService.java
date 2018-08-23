@@ -24,6 +24,7 @@
 package org.entando.entando.plugins.jpkiebpm.aps.system.services.kie;
 
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -40,5 +41,11 @@ public interface IKieFormService {
     public List<KieProcessInstance> getAllProcessInstancesList();
 
     public JSONObject getAllCases(String container);
+
+    public JSONArray getAllActiveHumanTasks();
+
+    public String completeTask(String payload, String container, String taskId);
+
+    public String getTaskDetails(String taskId);
 
 }
