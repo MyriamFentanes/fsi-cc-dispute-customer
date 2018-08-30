@@ -95,6 +95,10 @@ public class KieFormController {
 
     @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getAllTasks() {
+
+
+
+
         JSONArray response = this.getKieFormService().getAllActiveHumanTasks();
         return response.toString();
     }
