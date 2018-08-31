@@ -4,10 +4,8 @@ INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defa
 <property key="it">Messaggi di Sistema</property>
 </properties>',NULL,NULL,NULL,NULL,1,NULL);
 INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('login_form','<?xml version="1.0" encoding="UTF-8"?>
-<properties>
-<property key="en">Login Form</property>
-<property key="it">Form di Login</property>
-</properties>',NULL,NULL,NULL,NULL,1,NULL);
+<properties><property key="en">Login Form</property><property key="it">Form di Login</property></properties>
+',NULL,NULL,NULL,NULL,1,'free');
 INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('formAction','<?xml version="1.0" encoding="UTF-8"?>
 <properties>
 <property key="en">Internal Servlet</property>

@@ -84,6 +84,7 @@ public class EntandoOauth2Interceptor extends HandlerInterceptorAdapter {
             OAuthAccessResourceRequest requestMessage = new OAuthAccessResourceRequest(request, ParameterStyle.HEADER);
 
             String accessToken = requestMessage.getAccessToken();
+            System.out.println("accessToken at EntandoOauth2Interceptor: "+accessToken);
             if (StringUtils.isBlank(accessToken)) {
                 logger.warn("no access token found");
                 throw new EntandoTokenException("no access token found", request, null);

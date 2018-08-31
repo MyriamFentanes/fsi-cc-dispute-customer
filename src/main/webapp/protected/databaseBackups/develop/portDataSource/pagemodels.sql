@@ -383,7 +383,6 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
               <![endif]-->
               <@c.import url="/WEB-INF/aps/jsp/models/inc/content_inline_editing.jsp" />
               <@c.import url="/WEB-INF/aps/jsp/models/inc/header-inclusions.jsp" />
-              <@c.import url="/WEB-INF/aps/jsp/models/inc/flash_toast.jsp" />
         <style>
             @media (max-width: 1050px) {
                 .fsi-header .navbar-header {
@@ -654,7 +653,6 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-l
               <![endif]-->
               <@c.import url="/WEB-INF/aps/jsp/models/inc/content_inline_editing.jsp" />
               <@c.import url="/WEB-INF/aps/jsp/models/inc/header-inclusions.jsp" />
-              <@c.import url="/WEB-INF/aps/jsp/models/inc/flash_toast.jsp" />
         <style>
             @media (max-width: 1050px) {
                 .fsi-header .navbar-header {

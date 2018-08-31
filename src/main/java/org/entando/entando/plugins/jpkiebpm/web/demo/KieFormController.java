@@ -23,9 +23,11 @@
  */
 package org.entando.entando.plugins.jpkiebpm.web.demo;
 
+import com.agiletec.aps.system.services.user.UserDetails;
 import org.apache.commons.io.IOUtils;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.IKieFormService;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
+import org.entando.entando.web.common.annotation.RestAccessControl;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -41,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@SessionAttributes("user")
 public class KieFormController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -96,9 +99,6 @@ public class KieFormController {
     @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getAllTasks() {
 
-
-
-
         JSONArray response = this.getKieFormService().getAllActiveHumanTasks();
         return response.toString();
     }
@@ -118,5 +118,19 @@ public class KieFormController {
 
         String response = this.getKieFormService().getTaskDetails(taskid);
         return response;
+    }
+    @RestAccessControl(permission = "superuser")
+    @RequestMapping(value = "/kiebpm/userprofile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAllTasks(@ModelAttribute("user") UserDetails user) {
+
+        if(user!=null){
+            System.out.print(user.getUsername());
+            logger.info("User"+user.getUsername());
+            return  user.getUsername();
+        }
+
+        return "none";
+
+//        return response.toString();
     }
 }
