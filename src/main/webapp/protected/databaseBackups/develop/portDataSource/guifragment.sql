@@ -1953,7 +1953,7 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <script>
   window.onload=function(){
 	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing.page");
+	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing_secure.page");
 }
         
 </script> 
@@ -1968,7 +1968,11 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
                                         <p>Show Full Account Number:</p>
                                     </div>
                                 </div>
-</a>',NULL,0);
+</a>
+<script>
+localStorage.setItem("accessToken", "${Session.currentUser}");
+console.log("${Session.currentUser}");
+</script>',NULL,0);
 INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('home_page_cards','home_page_cards',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
 <style>
     .homepagecard {
@@ -1999,7 +2003,7 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <script>
   window.onload=function(){
 	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing.page");
+	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing_secure.page");
 }
 </script> 
 <a  id="gopage" class="blackan" href="">   

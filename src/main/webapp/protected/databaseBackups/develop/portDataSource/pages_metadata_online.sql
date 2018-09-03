@@ -23,23 +23,29 @@ INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,
 <property key="en">Home</property>
 <property key="it">Home</property>
 </properties>','home',1,NULL,'2017-02-18 00:12:24');
-INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('landing','<?xml version="1.0" encoding="UTF-8"?>
-<properties><property key="en">landing</property><property key="it">landing</property></properties>
+INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('landing_secure','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">landing-secure</property><property key="it">landing-secure</property></properties>
 ','fsi-dashboard-customer',1,'<?xml version="1.0" encoding="UTF-8"?>
 <config>
   <useextratitles>false</useextratitles>
+  <extragroups>
+    <group name="free" />
+  </extragroups>
   <charset>utf-8</charset>
   <mimeType>text/html</mimeType>
 </config>
 
-','2018-05-09 20:09:26');
-INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('home','<?xml version="1.0" encoding="UTF-8"?>
-<properties><property key="en">home</property><property key="it">home</property></properties>
+','2018-09-03 10:07:37');
+INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('home_secure','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">home-secure</property><property key="it">home-secure</property></properties>
 ','fsi-landing',1,'<?xml version="1.0" encoding="UTF-8"?>
 <config>
   <useextratitles>false</useextratitles>
+  <extragroups>
+    <group name="free" />
+  </extragroups>
   <charset>utf-8</charset>
   <mimeType>text/html</mimeType>
 </config>
 
-','2018-08-31 16:45:27');
+','2018-09-03 10:08:11');
