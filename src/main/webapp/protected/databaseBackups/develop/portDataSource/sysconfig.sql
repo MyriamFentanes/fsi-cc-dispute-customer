@@ -54,26 +54,18 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','userProf
 <profiletypes>
 	<profiletype typecode="CCD" typedescr="Credit Card Profile">
 		<attributes>
-			<attribute name="status" attributetype="Text" description="Cardholder Status">
-				<validations>
-					<required>true</required>
-				</validations>
-			</attribute>
-			<attribute name="fraudAmt" attributetype="Text" description="Fraud Amount">
-				<validations>
-					<required>true</required>
-				</validations>
-			</attribute>
-			<attribute name="IncntCount" attributetype="Number" description="Incident Count">
-				<validations>
-					<required>true</required>
-				</validations>
-			</attribute>
-			<attribute name="age" attributetype="Number" description="Age">
-				<validations>
-					<required>true</required>
-				</validations>
-			</attribute>
+			<attribute name="name" attributetype="Monotext" description="Name" />
+			<attribute name="lname" attributetype="Monotext" description="Last Name" />
+			<attribute name="age" attributetype="Monotext" description="Age" />
+			<attribute name="tfrdamnt" attributetype="Monotext" description="Total Fraud Amount" />
+			<attribute name="cStatus" attributetype="Monotext" description="Customer Status" />
+			<attribute name="incCount" attributetype="Monotext" description="Incident Count" />
+			<attribute name="avaCredit" attributetype="Monotext" description="Available Credit" />
+			<attribute name="minCredit" attributetype="Monotext" description="Minimum Credit" />
+			<attribute name="crntBal" attributetype="Monotext" description="Current Balance" />
+			<attribute name="lstatmentb" attributetype="Monotext" description="Last statement balance" />
+			<attribute name="nxtStmnt" attributetype="Monotext" description="Next statement due" />
+			<attribute name="tranxtn" attributetype="Monotext" description="Transactions" />
 		</attributes>
 	</profiletype>
 	<profiletype typecode="PFL" typedescr="Default user profile">
@@ -132,9 +124,9 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','jpkiebpm
             <active>true</active>
             <id>1</id>
             <name>remote</name>
-            <username>pamAdmin</username>
-            <password>redhatpam1!</password>
-            <hostname>rhpam7-cc-dispute-kieserver-demo-credit-card-dispute-rhpam7.apps.dev.ldcloud.com.au</hostname>
+            <username>kieAdmin</username>
+            <password>kieAdmin!23</password>
+            <hostname>ccd-rhpam7-auth-kieserver.apps.dev.ldcloud.com.au</hostname>
             <schema>http</schema>
             <port>80</port>
             <webapp></webapp>
@@ -145,10 +137,10 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','jpkiebpm
 ');
 INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoComponentsReport','The component installation report','<?xml version="1.0" encoding="UTF-8"?>
 <reports status="OK">
-	<creation>2018-09-03 11:48:16</creation>
-	<lastupdate>2018-09-03 11:48:18</lastupdate>
+	<creation>2018-09-03 14:44:39</creation>
+	<lastupdate>2018-09-03 14:44:41</lastupdate>
 	<components>
-		<component code="entandoCore" date="2018-09-03 11:48:16" status="OK">
+		<component code="entandoCore" date="2018-09-03 14:44:39" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="OK">
 					<table name="sysconfig" />
@@ -195,7 +187,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="jacms" date="2018-09-03 11:48:17" status="OK">
+		<component code="jacms" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="OK">
 					<table name="contentmodels" />
@@ -217,7 +209,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="entando-misc-less" date="2018-09-03 11:48:17" status="OK">
+		<component code="entando-misc-less" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="NOT_AVAILABLE" />
@@ -228,7 +220,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="jprestapi" date="2018-09-03 11:48:17" status="OK">
+		<component code="jprestapi" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="NOT_AVAILABLE" />
@@ -239,7 +231,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="entando-admin-console" date="2018-09-03 11:48:17" status="OK">
+		<component code="entando-admin-console" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="OK">
@@ -252,7 +244,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="entando-portal-ui" date="2018-09-03 11:48:17" status="OK">
+		<component code="entando-portal-ui" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="NOT_AVAILABLE" />
@@ -263,7 +255,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="jpkiebpm" date="2018-09-03 11:48:17" status="OK">
+		<component code="jpkiebpm" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="OK">
@@ -277,7 +269,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoC
 			</data>
 			<postProcess status="NOT_AVAILABLE" />
 		</component>
-		<component code="entando-app-view-cms-default" date="2018-09-03 11:48:17" status="OK">
+		<component code="entando-app-view-cms-default" date="2018-09-03 14:44:40" status="OK">
 			<schema status="OK">
 				<datasource name="portDataSource" status="NOT_AVAILABLE" />
 				<datasource name="servDataSource" status="NOT_AVAILABLE" />

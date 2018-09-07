@@ -1869,10 +1869,10 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto);
  </style>
-<link rel="stylesheet" href="<@wp.resourceURL />static/static/css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/css/main.css" rel="stylesheet">
 <div id="fsi-demo-customer"></div>
 
-<script type="text/javascript" src="<@wp.resourceURL />static/static/js/main.js"></script>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/js/main.js"></script>
 <script>
     var accessToken = localStorage.getItem("accessToken");
     console.log(accessToken);
@@ -1929,50 +1929,12 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
     <div class="col-md-6 col-md-offset-1">Copyright Example Company &copy; 2014-2015</div>
   </div>
 </div>',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('FSI_Toplink_Account_Placeholder','FSI_Toplink_Account_Placeholder',NULL,'<b>account</b>',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('FSI_Toplink_Customer_Internal','FSI_Toplink_Customer_Internal',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
-<a href="<@wp.url page="customer_internal" />" >personal</a>',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('FSI_Toplink_Logout','FSI_Toplink_Logout',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
-<!--#if (Session.currentUser != "guest")-->
-    <a href="<@wp.info key="systemParam" paramName="applicationBaseURL" />do/logout.action">Logout</a>
-<!--/#if-->',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('FSI_Toplink_Personal_Placeholder','FSI_Toplink_Personal_Placeholder',NULL,'<b>personal</b>',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('FSI_Toplink_Small_Business_Placeholder','FSI_Toplink_Small_Business_Placeholder',NULL,'<b>small business</b>',NULL,0);
 INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-greeting','fsi-greeting',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
-<style>
- .blackan{
-   color: black;
- }
- .blackan :hover{
-  color: black;
-} 
-.blackan :active{
-  color: black;
-}
-</style>
-<script>
-  window.onload=function(){
-	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing_secure.page");
-}
-        
-</script> 
-<a  id="gopage" class="blackan" href="">        
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h2> Hi Kevin!</h2>
-                                    </div>
-                                    <div class="ibox-content" >
-                                        <p>Account Number </p>
-                                        <h2><b>XXXX-XXXX-XXXX-1234</b></h2>
-                                        <p>Show Full Account Number:</p>
-                                    </div>
-                                </div>
-</a>
-<script>
-localStorage.setItem("accessToken", "${Session.currentUser}");
-console.log("${Session.currentUser}");
-</script>',NULL,0);
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-greeting/static/css/main.css" rel="stylesheet">
+<div id="fsi-ccd-customer-js-greeting"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-greeting/static/js/main.js"></script>
+',NULL,0);
 INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('home_page_cards','home_page_cards',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
 <style>
     .homepagecard {
@@ -1981,43 +1943,53 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
     }
 </style>
 <img class="homepagecard" src="<@wp.resourceURL />static/img/homecards.png" />',NULL,0);
-INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('monthly-income-greeting','monthly-income-greeting',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
-<style>
- .blackan{
-   color: black;
- }
- .blackan :hover{
-  color: black;
-} 
-.blackan :active{
-  color: black;
-}
- .monthyIncome{
-   background-image: url(<@wp.resourceURL />static/img/monthyIncomebg.png);
-   background-repeat: no-repeat;
-   background-size: 100% 100%;
-   margin-top: -1%;
-   margin-left: -7%;
- }
-</style>
-<script>
-  window.onload=function(){
-	var current=window.location.host;
-	$("a#gopage").attr("href", "http://"+current+"/fsi-credit-card-dispute-customer/en/landing_secure.page");
-}
-</script> 
-<a  id="gopage" class="blackan" href="">   
-        <div class="widget lazur-bg no-padding monthyIncome">
-            <div class="p-m"   style="height: 100px">
-                <h1 class="m-xs">$ 210,660</h1>
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-header','fsi-header',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
 
-                <h3 class="font-bold no-margins">
-                    Monthly income
-                        </h3>
-                <small>Income form project Beta.</small>
-            </div>
-            <div class="flot-chart">
-                <div class="flot-chart-content" id="flot-chart2"></div>
-            </div>
-        </div>
-</a>',NULL,0);
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-header/static/css/main.css" rel="stylesheet">
+<div id="fsi-ccd-customer-js-header"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-header/static/js/main.js"></script>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-navbar','fsi-navbar',NULL,'<style>
+        .mainnav {
+            padding-bottom: 90px;
+            padding-top: 50px;
+        }
+    
+        .mainnavbar li {
+            padding-right: 40px;
+        }
+    
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
+    <div class="mainnav">
+        <ul class="nav navbar-nav mainnavbar">
+            <li>
+                <h2 class="underline">Account</h2>
+            </li>
+            <li>
+                <h2>Payment & Transfers</h2>
+            </li>
+            <li>
+                <h2>Services</h2>
+            </li>
+            <li>
+                <h2>Rewards & Benefits</h2>
+            </li>
+        </ul>
+    </div>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-case-details','fsi-case-details',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-case-details/static/css/main.css" rel="stylesheet">
+<div id="fsi-ccd-customer-js-case-details"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-case-details/static/js/main.js"></script>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-transaction-history','fsi-transaction-history',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-transaction-history/static/css/main.css" rel="stylesheet">
+<div id="fsi-demo-customer-transaction-history"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-transaction-history/static/js/main.js"></script>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-workflow','fsi-workflow',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/css/main.css" rel="stylesheet">
+<div id="fsi-demo-customer-workflow"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/js/main.js"></script>',NULL,0);

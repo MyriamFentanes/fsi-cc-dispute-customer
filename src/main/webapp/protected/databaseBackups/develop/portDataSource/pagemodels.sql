@@ -316,35 +316,23 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
 <frames>
 	<frame pos="0">
 		<descr>Top Bar 2</descr>
-		<sketch x1="0" y1="0" x2="1" y2="1" />
+		<sketch x1="0" y1="0" x2="11" y2="1" />
 	</frame>
 	<frame pos="1">
 		<descr>Top Bar 2</descr>
-		<sketch x1="2" y1="0" x2="3" y2="1" />
+		<sketch x1="0" y1="2" x2="11" y2="3" />
 	</frame>
 	<frame pos="2">
-		<descr>Top Bar 3</descr>
-		<sketch x1="4" y1="0" x2="5" y2="1" />
+		<descr>Main Bar 1</descr>
+		<sketch x1="0" y1="4" x2="11" y2="5" />
 	</frame>
 	<frame pos="3">
-		<descr>Top Bar 4</descr>
-		<sketch x1="6" y1="0" x2="7" y2="1" />
+		<descr>Main Bar 2</descr>
+		<sketch x1="0" y1="6" x2="11" y2="7" />
 	</frame>
 	<frame pos="4">
-		<descr>Top Bar 5</descr>
-		<sketch x1="8" y1="0" x2="9" y2="1" />
-	</frame>
-	<frame pos="5">
-		<descr>Top Bar 6</descr>
-		<sketch x1="10" y1="0" x2="11" y2="1" />
-	</frame>
-	<frame pos="6">
-		<descr>Main Bar 1</descr>
-		<sketch x1="0" y1="2" x2="11" y2="9" />
-	</frame>
-	<frame pos="7">
 		<descr>Footer</descr>
-		<sketch x1="0" y1="10" x2="11" y2="11" />
+		<sketch x1="0" y1="8" x2="11" y2="9" />
 	</frame>
 </frames>
 
@@ -384,105 +372,9 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
               <@c.import url="/WEB-INF/aps/jsp/models/inc/content_inline_editing.jsp" />
               <@c.import url="/WEB-INF/aps/jsp/models/inc/header-inclusions.jsp" />
         <style>
-            @media (max-width: 1050px) {
-                .fsi-header .navbar-header {
-                    width: 100%;
-                    min-height: initial;
-                    position: static!important;
-                }
-                .fsi-header .collapse {
-                    display: none !important;
-                }
-                .fsi-header .collapse.in {
-                    display: block !important;
-                }
-                .fsi-header .navbar-toggle  {
-                    display: block !important;
-                }
-                .fsi-header .navbar-nav>li {
-                    float: none;
-                }
-                .fsi-header .navbar-right {
-                    float: left !important;
-                    margin-bottom: 20px !important;
-                }
-                .fsi-header .navbar-collapse {
-                    border-top: 1px solid #e7e7e7;
-                }
+            .fsi-greeting{
+                margin-bottom: 20px;
             }
-
-            .fsi-header .navbar-header {
-                min-height: 120px;
-                position: absolute;
-            }
-
-            .fsi-header .navbar-right {
-                margin-right: 20px !important;
-            }
-            .fsi-header .navbar-nav>li>a {
-                padding: 0;
-                color: #fff;
-            }
-
-            .fsi-header .navbar-toggle,
-            .fsi-header .navbar-toggle:hover,
-            .fsi-header .navbar-toggle:focus {
-                background: transparent;
-                height: 50px;
-                margin: 20px;
-            }
-            .fsi-header .navbar-toggle .icon-bar{
-                background-color: #fff;
-            }
-
-            .fsi-header {
-                font-family: "Open Sans", sans-serif;
-                font-size: 24px;
-                background: #002235;
-                color: #ffffff;
-                min-height: 120px;
-                margin-bottom: 0;
-            }
-
-            .fsi-header .logo-names {
-                margin-top: 26px;
-                width: 330px;
-                margin-left: 30px;
-                display: flex;
-                align-items: center;
-            }
-
-            .fsi-header .fa.fa-shield {
-                font-size: 40px;
-            }
-
-            .fsi-header.logo-names b {
-                font-weight: 600;
-            }
-            .fsi-header.logo-names span {
-                font-weight: 300;
-            }
-            .logo-menu-pages {
-                height: 22px;
-                margin: 37px 5px 0 40px;
-                font-size: 16px;
-                font-weight: 300;
-                font-family: "Open Sans", sans-serif;
-                line-height: 22px;
-                text-transform: uppercase;
-            }
-             .whitean{
-             color: white;
-                 
-             }
-             .whitean :hover{
-             color: white;
-                 
-             } 
-             .whitean :active{
-             color: white;
-                 
-             }
         </style>
 <script>
   window.onload=function(){
@@ -493,67 +385,37 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
     </head>
     <body>
         <div id="wrapper">
-            <nav class="navbar navbar-default fsi-header">
-                <div class="">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="logo-names">
-                            <wp:show frame="0" />
-                            <a id="homelogo"  class="whitean" href="" >
-                            <img alt="image" class="" src="/fsi-credit-card-dispute-customer/resources/static/img/shield-logo.png">&nbsp;
-                            <b>FORTRESS - Bank Loan</b>
-                            </a>
-                        </div>
+        <@wp.show  frame=0 />
+            <div class="row header-custom">
+            <div class="gray-bg">
+            <div class="wrapper wrapper-content">
+              <div class="container">
+              
+                <div class="row">
+                   <div class="col-md-12">
+                     <@wp.show  frame=1 />
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=0 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=1 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=2 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=3 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=4 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=5 />
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-            
-               
-            <div class="wrapper wrapper-content">     
-                    <div class="row">
-                        <div class="col-md-12">
-                            <@wp.show  frame=6 />
-                         </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                       <@wp.show  frame=2 />
                     </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-12">
+                       <@wp.show  frame=3 />
+                    </div>
+                 </div>
+                 
+              </div>
             </div>
-             
+            </div>
+            </div>
            <div class="row">
                 <div class="col-md-12">
-                    <@wp.show  frame=7 />
+                    <@wp.show  frame=4 />
                 </div>
             </div>
-        
-             
         </div>
     </body>
 </html>
@@ -561,60 +423,24 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-d
 INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-landing','fsi-landing','<?xml version="1.0" encoding="UTF-8"?>
 <frames>
 	<frame pos="0">
-		<descr>Top Bar 2</descr>
-		<sketch x1="0" y1="0" x2="1" y2="1" />
+		<descr>Header 1</descr>
+		<sketch x1="0" y1="0" x2="11" y2="1" />
 	</frame>
 	<frame pos="1">
-		<descr>Top Bar 2</descr>
-		<sketch x1="2" y1="0" x2="3" y2="1" />
+		<descr>Header 2</descr>
+		<sketch x1="0" y1="2" x2="11" y2="3" />
 	</frame>
 	<frame pos="2">
-		<descr>Top Bar 3</descr>
-		<sketch x1="4" y1="0" x2="5" y2="1" />
+		<descr>Main Bar 1</descr>
+		<sketch x1="0" y1="4" x2="11" y2="5" />
 	</frame>
 	<frame pos="3">
-		<descr>Top Bar 4</descr>
-		<sketch x1="6" y1="0" x2="7" y2="1" />
+		<descr>Main Bar 2</descr>
+		<sketch x1="0" y1="6" x2="11" y2="7" />
 	</frame>
 	<frame pos="4">
-		<descr>Top Bar 5</descr>
-		<sketch x1="8" y1="0" x2="9" y2="1" />
-	</frame>
-	<frame pos="5">
-		<descr>Top Bar 6</descr>
-		<sketch x1="10" y1="0" x2="11" y2="1" />
-	</frame>
-	<frame pos="6">
-		<descr>Main Bar 1</descr>
-		<sketch x1="0" y1="2" x2="2" y2="5" />
-	</frame>
-	<frame pos="7">
-		<descr>Main Bar 2</descr>
-		<sketch x1="3" y1="2" x2="6" y2="5" />
-	</frame>
-	<frame pos="8">
-		<descr>Main Bar 3</descr>
-		<sketch x1="7" y1="2" x2="8" y2="5" />
-	</frame>
-	<frame pos="9">
-		<descr>Main Bar 4</descr>
-		<sketch x1="9" y1="2" x2="11" y2="5" />
-	</frame>
-	<frame pos="10">
-		<descr>Main Bar 1</descr>
-		<sketch x1="0" y1="6" x2="2" y2="9" />
-	</frame>
-	<frame pos="11">
-		<descr>Main Bar 2</descr>
-		<sketch x1="3" y1="6" x2="8" y2="9" />
-	</frame>
-	<frame pos="12">
-		<descr>Main Bar 3</descr>
-		<sketch x1="9" y1="6" x2="11" y2="9" />
-	</frame>
-	<frame pos="13">
 		<descr>Footer</descr>
-		<sketch x1="0" y1="10" x2="11" y2="11" />
+		<sketch x1="0" y1="8" x2="11" y2="9" />
 	</frame>
 </frames>
 
@@ -654,183 +480,48 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-l
               <@c.import url="/WEB-INF/aps/jsp/models/inc/content_inline_editing.jsp" />
               <@c.import url="/WEB-INF/aps/jsp/models/inc/header-inclusions.jsp" />
         <style>
-            @media (max-width: 1050px) {
-                .fsi-header .navbar-header {
-                    width: 100%;
-                    min-height: initial;
-                    position: static!important;
-                }
-                .fsi-header .collapse {
-                    display: none !important;
-                }
-                .fsi-header .collapse.in {
-                    display: block !important;
-                }
-                .fsi-header .navbar-toggle  {
-                    display: block !important;
-                }
-                .fsi-header .navbar-nav>li {
-                    float: none;
-                }
-                .fsi-header .navbar-right {
-                    float: left !important;
-                    margin-bottom: 20px !important;
-                }
-                .fsi-header .navbar-collapse {
-                    border-top: 1px solid #e7e7e7;
-                }
-            }
-
-            .fsi-header .navbar-header {
-                min-height: 120px;
-                position: absolute;
-            }
-
-            .fsi-header .navbar-right {
-                margin-right: 20px !important;
-            }
-            .fsi-header .navbar-nav>li>a {
-                padding: 0;
-                color: #fff;
-            }
-
-            .fsi-header .navbar-toggle,
-            .fsi-header .navbar-toggle:hover,
-            .fsi-header .navbar-toggle:focus {
-                background: transparent;
-                height: 50px;
-                margin: 20px;
-            }
-            .fsi-header .navbar-toggle .icon-bar{
-                background-color: #fff;
-            }
-
-            .fsi-header {
-                font-family: "Open Sans", sans-serif;
-                font-size: 24px;
-                background: #002235;
-                color: #ffffff;
-                min-height: 120px;
-                margin-bottom: 0;
-            }
-
-            .fsi-header .logo-names {
-                margin-top: 26px;
-                width: 330px;
-                margin-left: 30px;
-                display: flex;
-                align-items: center;
-            }
-
-            .fsi-header .fa.fa-shield {
-                font-size: 40px;
-            }
-
-            .fsi-header.logo-names b {
-                font-weight: 600;
-            }
-            .fsi-header.logo-names span {
-                font-weight: 300;
-            }
-            .logo-menu-pages {
-                height: 22px;
-                margin: 37px 5px 0 40px;
-                font-size: 16px;
-                font-weight: 300;
-                font-family: "Open Sans", sans-serif;
-                line-height: 22px;
-                text-transform: uppercase;
+            .fsi-greeting{
+                margin-bottom: 20px;
             }
         </style>
+        <script>
+        localStorage.setItem("accessToken", "${Session.currentUser.accessToken}");
+       //localStorage.setItem("accessToken", "${Session.currentUser}");
+        console.log("${Session.currentUser}");
+        console.log(window.location.pathname );
+        </script>
     </head>
     <body>
         <div id="wrapper">
-            <nav class="navbar navbar-default fsi-header">
-                <div class="">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div class="logo-names">
-                            <wp:show frame="0" />
-                            <img alt="image" class="" src="/fsi-credit-card-dispute-customer/resources/static/img/shield-logo.png">&nbsp;
-                            <b>FORTRESS - Bank Loan</b>
-                        </div>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=0 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=1 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=2 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=3 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=4 />
-                            </li>
-                            <li class="logo-menu-pages">
-                                <@wp.show  frame=5 />
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-            
+         <@wp.show  frame=0 />
             <div class="row header-custom">
-            <div class="row banner-main">
-                <div class="col-md-12">
-                    <div class=" left-banner middle-box-internal text-center">
-                        <p>Improving businesses&apos; life through meaningful services.
-                        </p>
-                        <input type="submit" value="CONTACT US" class="btn btn-primary login-button">
-                    </div>
-                </div>
-            </div>
             <div class="gray-bg">
-                <div class="wrapper wrapper-content">
+            <div class="wrapper wrapper-content">
+            <div class="container">
+            
                 <div class="row">
-                    <div class="col-md-2">
-                    <@wp.show  frame=6 />
+                    <div class="col-md-12">
+                      <@wp.show  frame=1 />
                     </div>
-                    <div class="col-md-6">
-                    <@wp.show  frame=7 />
-                    </div>
-                    <div class="col-md-2">
-                    <@wp.show  frame=8 />
-                    </div>
-                    <div class="col-md-2">
-                    <@wp.show  frame=9 />
+                </div>
+                <div class="row fsi-greeting">
+                    <div class="col-md-12">
+                      <@wp.show  frame=2 />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
-                    <@wp.show  frame=10 />
-                    </div>
-                    <div class="col-md-8">
-                    <@wp.show  frame=11 />
-                    </div>
-                    <div class="col-md-2">
-                    <@wp.show  frame=12 />
+                    <div class="col-md-12">
+                       <@wp.show  frame=3 />
                     </div>
                 </div>
-                </div>
-             </div>
+                
+            </div>
+            </div>
+            </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <@wp.show  frame=13 />
+                    <@wp.show  frame=4 />
                 </div>
             </div>
         </div>

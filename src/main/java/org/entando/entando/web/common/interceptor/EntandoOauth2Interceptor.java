@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-Present Entando Inc. (http://www.entando.com) All rights reserved.
+ * Copyright 2018-Present Entando Inc. (http://www.entando.com) All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -44,6 +44,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class EntandoOauth2Interceptor extends HandlerInterceptorAdapter {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+    
+    public final static String IGNORE_PERMISSION = "ignore";
 
     @Autowired
     private IApiOAuth2TokenManager oAuth2TokenManager;
@@ -68,7 +70,11 @@ public class EntandoOauth2Interceptor extends HandlerInterceptorAdapter {
             HandlerMethod method = (HandlerMethod) handler;
             if (method.getMethod().isAnnotationPresent(RequestMapping.class)) {
                 RestAccessControl rqm = method.getMethodAnnotation(RestAccessControl.class);
-                if (null == rqm) {
+                if (null == rqm
+                		|| StringUtils.isBlank(rqm.permission())
+                		|| rqm.permission().equalsIgnoreCase(IGNORE_PERMISSION)) {
+                	logger.debug("ignoring permission on the current REST API");
+                	this.extractOAuthParameters(request);
                     return true;
                 }
                 String permission = rqm.permission();
@@ -78,13 +84,40 @@ public class EntandoOauth2Interceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
+    protected void extractOAuthParameters(HttpServletRequest request) {
+        try {
+            logger.debug("No permission required");
+            OAuthAccessResourceRequest requestMessage = new OAuthAccessResourceRequest(request, ParameterStyle.HEADER);
+
+            String accessToken = requestMessage.getAccessToken();
+            if (StringUtils.isBlank(accessToken)) {
+                logger.warn("no access token found");
+                throw new EntandoTokenException("no access token found", request, null);
+            }
+
+            final OAuth2Token token = oAuth2TokenManager.getApiOAuth2Token(accessToken);
+            this.validateToken(request, accessToken, token);
+
+            String username = token.getClientId();
+            UserDetails user = getAuthenticationProviderManager().getUser(username);
+            if (user != null) {
+                request.getSession().setAttribute("user", user);
+                logger.debug("User {} requesting resource that requires no permission", username);
+            } else {
+                logger.info("User {} not found ", username);
+            }
+        } catch (OAuthSystemException | ApsSystemException | OAuthProblemException ex) {
+            logger.error("System exception {}", ex.getMessage());
+            throw new EntandoTokenException("error parsing OAuth parameters", request, "guest");
+        }
+    }
+    
     protected void extractOAuthParameters(HttpServletRequest request, String permission) {
         try {
             logger.debug("Permission required: {}", permission);
             OAuthAccessResourceRequest requestMessage = new OAuthAccessResourceRequest(request, ParameterStyle.HEADER);
 
             String accessToken = requestMessage.getAccessToken();
-            System.out.println("accessToken at EntandoOauth2Interceptor: "+accessToken);
             if (StringUtils.isBlank(accessToken)) {
                 logger.warn("no access token found");
                 throw new EntandoTokenException("no access token found", request, null);
@@ -128,4 +161,6 @@ public class EntandoOauth2Interceptor extends HandlerInterceptorAdapter {
         }
     }
 
+    
+    
 }
