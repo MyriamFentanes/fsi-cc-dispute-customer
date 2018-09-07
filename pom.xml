@@ -95,6 +95,14 @@
                 <jboss>jboss</jboss>
             </properties>
         </profile>
+        <profile>
+           <id>openshift</id>
+           <properties>
+               <env>production-jboss</env>
+               <env.db.environment>production</env.db.environment>
+               <jboss>jboss</jboss>
+           </properties>
+       </profile>
 
     </profiles>
     <properties>
