@@ -55,6 +55,7 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
     private static final Logger logger = LoggerFactory.getLogger(KieFormManager.class);
 
     private Map<String, String> hostNameVersionMap = new HashMap<>();
+    private Map<String, String> headersMap;
 
     @Override
     public void init() {
@@ -1272,6 +1273,8 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
         HashMap headersMap = new HashMap();
         String result = null;
         JSONObject json = null;
+
+        logger.debug("kieFormManager getAllCases called ");
         try {
             if (null == config) {
                 config = this.loadFirstConfigurations();

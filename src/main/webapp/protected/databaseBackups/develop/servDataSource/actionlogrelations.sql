@@ -128,3 +128,4 @@ INSERT INTO actionlogrelations (recordid,refgroup) VALUES (94,'bpm_broker');
 INSERT INTO actionlogrelations (recordid,refgroup) VALUES (94,'free');
 INSERT INTO actionlogrelations (recordid,refgroup) VALUES (95,'bpm_broker');
 INSERT INTO actionlogrelations (recordid,refgroup) VALUES (95,'free');
+INSERT INTO actionlogrelations (recordid,refgroup) VALUES (96,'free');

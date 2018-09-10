@@ -99,6 +99,8 @@ public class KieFormController {
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getAllCases(@PathVariable String container) {
+
+        logger.info("Get all Cases request");
         JSONObject response = this.getKieFormService().getAllCases(container);
         return response.toMap();
     }
