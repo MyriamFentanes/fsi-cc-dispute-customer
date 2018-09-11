@@ -1269,8 +1269,9 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
     }
 
 
-    public JSONObject getAllCases(String containerId) throws ApsSystemException {
+    public JSONObject getAllCases(String containerId, String status) throws ApsSystemException {
         HashMap headersMap = new HashMap();
+        Map<String, String> queryStringParam = new HashMap<>();
         String result = null;
         JSONObject json = null;
 
@@ -1283,10 +1284,21 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
                 return null;
             }
 
+            if(status != null){
+                queryStringParam.put("status", status);
+            }
+
             Endpoint t = ((Endpoint) KieEndpointDictionary.create().get(KieBpmSystemConstants.API_GET_CASES_LIST)).resolveParams(containerId);
             headersMap.put("Accept", "application/json");
             KieClient client = getCurrentClient();
-            result = (new KieRequestBuilder(client)).setEndpoint(t).setHeaders(headersMap).setDebug(this.config.getDebug().booleanValue()).doRequest();
+            result =
+                    (new KieRequestBuilder(client))
+                            .setEndpoint(t)
+                            .setHeaders(headersMap)
+                            .setRequestParams(queryStringParam)
+                            .setDebug(this.config.getDebug()
+                            .booleanValue())
+                            .doRequest();
 
             if (!result.isEmpty()) {
                 json = new JSONObject(result);

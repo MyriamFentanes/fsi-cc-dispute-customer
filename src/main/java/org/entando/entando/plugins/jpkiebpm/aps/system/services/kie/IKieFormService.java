@@ -40,7 +40,7 @@ public interface IKieFormService {
 
     public List<KieProcessInstance> getAllProcessInstancesList();
 
-    public JSONObject getAllCases(String container);
+    public JSONObject getAllCases(String container, String status);
 
     public JSONArray getAllActiveHumanTasks();
 
