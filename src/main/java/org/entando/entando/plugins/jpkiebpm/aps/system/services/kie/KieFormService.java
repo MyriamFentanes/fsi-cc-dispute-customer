@@ -77,11 +77,11 @@ public class KieFormService implements IKieFormService {
 
 
     @Override
-    public JSONObject getAllCases(String containerId) {
+    public JSONObject getAllCases(String containerId, String status) {
 
         try {
             this.getKieFormManager().loadFirstConfigurations();
-            return this.getKieFormManager().getAllCases(containerId);
+            return this.getKieFormManager().getAllCases(containerId, status);
         } catch (Exception e) {
             logger.error("failed to fetch cases ", e);
             throw new RuntimeException("Error invoking getAllCases", e);
