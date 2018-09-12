@@ -41,6 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.HEAD;
 import java.util.*;
 
 import static org.entando.entando.plugins.jpkiebpm.aps.system.KieBpmSystemConstants.*;
@@ -1272,6 +1273,7 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
     public JSONObject getAllCases(String containerId, String status) throws ApsSystemException {
         HashMap headersMap = new HashMap();
         Map<String, String> queryStringParam = new HashMap<>();
+
         String result = null;
         JSONObject json = null;
 
@@ -1284,7 +1286,7 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
                 return null;
             }
 
-            if(status != null){
+            if (status != null) {
                 queryStringParam.put("status", status);
             }
 
@@ -1297,8 +1299,9 @@ public class KieFormManager extends AbstractService implements IKieFormManager {
                             .setHeaders(headersMap)
                             .setRequestParams(queryStringParam)
                             .setDebug(this.config.getDebug()
-                            .booleanValue())
+                                    .booleanValue())
                             .doRequest();
+
 
             if (!result.isEmpty()) {
                 json = new JSONObject(result);

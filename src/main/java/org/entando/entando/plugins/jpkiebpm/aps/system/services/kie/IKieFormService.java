@@ -41,7 +41,7 @@ public interface IKieFormService {
     public List<KieProcessInstance> getAllProcessInstancesList();
 
     public JSONObject getAllCases(String container, String status);
-
+    
     public JSONArray getAllActiveHumanTasks();
 
     public String completeTask(String payload, String container, String taskId);
