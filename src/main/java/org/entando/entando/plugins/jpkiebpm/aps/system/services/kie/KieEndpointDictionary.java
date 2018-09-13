@@ -47,13 +47,6 @@ public class KieEndpointDictionary {
         endpoints.put(API_GET_PROCESS_DEFINITIONS_LIST, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/queries/processes/definitions", HttpStatus.SC_OK));
         endpoints.put(API_GET_PROCESS_INSTANCES_LIST, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/queries/processes/%s/instances?page=%d&pageSize=%d", HttpStatus.SC_OK));
         endpoints.put(API_GET_HUMAN_TASK_LIST, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/queries/tasks/instances/pot-owners", HttpStatus.SC_OK));
-
-        endpoints.put(API_GET_HUMAN_TASK_LIST_ADMIN, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/queries/tasks/instances/admins", HttpStatus.SC_OK));
-        endpoints.put(API_PUT_HUMAN_TASK_START, new Endpoint(IEndpoint.httpVerb.PUT, "/services/rest/server/containers/%s/tasks/%s/states/started", HttpStatus.SC_CREATED, true));
-        endpoints.put(API_PUT_HUMAN_TASK_OUTPUT, new Endpoint(IEndpoint.httpVerb.PUT, "/services/rest/server/containers/%s/tasks/%s/contents/output", HttpStatus.SC_CREATED, true));
-        endpoints.put(API_PUT_HUMAN_TASK_COMPLETE, new Endpoint(IEndpoint.httpVerb.PUT, "/services/rest/server/containers/%s/tasks/%s/states/completed", HttpStatus.SC_CREATED, true));
-        endpoints.put(API_GET_HUMAN_TASK_DETAILS, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/queries/tasks/instances/%s", HttpStatus.SC_OK));
-
         endpoints.put(API_GET_TASK_FORM_DEFINITION, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/containers/%s/forms/tasks/%s?filter=true", HttpStatus.SC_OK));
         endpoints.put(API_GET_PROCESS_DEFINITION, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/containers/%s/forms/processes/%s?filter=true", HttpStatus.SC_OK, true));
         endpoints.put(API_POST_PROCESS_START, new Endpoint(IEndpoint.httpVerb.POST, "/services/rest/server/containers/%s/processes/%s/instances/correlation/%s", HttpStatus.SC_CREATED, true));
