@@ -24,14 +24,13 @@
 package org.entando.entando.plugins.jpkiebpm.web.demo;
 
 import com.agiletec.aps.system.common.entity.model.attribute.AttributeInterface;
-import com.agiletec.aps.system.common.entity.model.attribute.MonoTextAttribute;
 import com.agiletec.aps.system.services.user.UserDetails;
 import org.apache.commons.io.IOUtils;
 import org.entando.entando.aps.system.services.userprofile.model.IUserProfile;
-import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.IKieFormService;
+import com.agiletec.aps.system.services.kie.IFsiKieFormService;
+import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieBpmConfig;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
 import org.entando.entando.web.common.annotation.RestAccessControl;
-import org.jdom.Text;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -53,13 +52,13 @@ public class KieFormController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private IKieFormService kieFormService;
+    private IFsiKieFormService kieFormService;
 
-    public IKieFormService getKieFormService() {
+    public IFsiKieFormService getKieFormService() {
         return kieFormService;
     }
 
-    public void setKieFormService(IKieFormService kieFormService) {
+    public void setKieFormService(IFsiKieFormService kieFormService) {
         this.kieFormService = kieFormService;
     }
 
@@ -70,7 +69,13 @@ public class KieFormController {
     Map<String, Object> runAdditionalInfoRules(@PathVariable String container, HttpServletRequest request) throws IOException {
         String json = IOUtils.toString(request.getInputStream());
         logger.info("Run additional info rules request json {} ", json);
-        String response = this.getKieFormService().runAdditionalInfoRules(json, container);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        String response = this.getKieFormService().runAdditionalInfoRules(config, json, container);
 
         logger.info("response ", response);
         JSONObject jsonObj = new JSONObject(response);
@@ -82,7 +87,13 @@ public class KieFormController {
     public Map<String, Object> executeStartCase(@PathVariable String container, @PathVariable String instance, HttpServletRequest request) throws IOException {
         String json = IOUtils.toString(request.getInputStream());
         logger.info("Start case request json {}", json);
-        String caseId = this.getKieFormService().executeStartCase(json, container, instance);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        String caseId = this.getKieFormService().executeStartCase(config, json, container, instance);
 
         Map<String, String> caseMap = new HashMap<>();
         caseMap.put("caseId", caseId.replace("\"", ""));
@@ -93,7 +104,13 @@ public class KieFormController {
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/instances", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<KieProcessInstance> getAllProcessInstancesList() {
-        return this.getKieFormService().getAllProcessInstancesList();
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        return this.getKieFormService().getAllProcessInstancesList(config);
     }
 
     @RestAccessControl(permission = "ignore")
@@ -101,7 +118,12 @@ public class KieFormController {
     public Map<String, Object> getAllCases(@PathVariable String container, @RequestParam String status) {
 
         logger.info("Get all Cases request");
-        JSONObject response = this.getKieFormService().getAllCases(container, status);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+        JSONObject response = this.getKieFormService().getAllCases(config, container, status);
         return response.toMap();
     }
 
@@ -109,7 +131,12 @@ public class KieFormController {
     @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getAllTasks() {
 
-        JSONArray response = this.getKieFormService().getAllActiveHumanTasks();
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONArray response = this.getKieFormService().getAllActiveHumanTasks(config);
         return response.toString();
     }
 
@@ -119,7 +146,13 @@ public class KieFormController {
 
         String json = IOUtils.toString(request.getInputStream());
         logger.info("Complete task request json {}", json);
-        String response = this.getKieFormService().completeTask(json, container, taskid);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        String response = this.getKieFormService().completeTask(config, json, container, taskid);
 
         return response;
     }
@@ -128,7 +161,12 @@ public class KieFormController {
     @RequestMapping(value = "/kiebpm/taskdetail/{taskid:.+}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getTaskDetail(@PathVariable String taskid) {
 
-        String response = this.getKieFormService().getTaskDetails(taskid);
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        String response = this.getKieFormService().getTaskDetails(config, taskid);
         return response;
     }
 

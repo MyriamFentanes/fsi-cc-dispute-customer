@@ -21,9 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.entando.entando.plugins.jpkiebpm.aps.system.services.kie;
+package com.agiletec.aps.system.services.kie;
 
 import org.eclipse.persistence.jaxb.MarshallerProperties;
+import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.IKieFormManager;
+import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieBpmConfig;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieTask;
 import org.json.JSONArray;
@@ -41,35 +43,43 @@ import java.util.Map;
 /**
  * @author E.Santoboni
  */
-public class KieFormService implements IKieFormService {
+public class FsiKieFormService implements IFsiKieFormService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private IKieFormManager kieFormManager;
 
-    @Override
-    public String runAdditionalInfoRules(String jsonBody, String instance) {
+    public Map<String, KieBpmConfig> getKieServerConfigurations() {
+
         try {
-            return this.getKieFormManager().runAdditionalInfoRules(jsonBody, instance);
+            return kieFormManager.getKieServerConfigurations();
         } catch (Exception e) {
             throw new RuntimeException("Error invoking runAdditionalInfoRules", e);
         }
     }
 
     @Override
-    public String executeStartCase(String json, String container, String instance) {
+    public String runAdditionalInfoRules(KieBpmConfig config, String jsonBody, String instance) {
         try {
-            return this.getKieFormManager().executeStartCase(json, container, instance);
+            return this.getKieFormManager().runAdditionalInfoRules(config, jsonBody, instance);
+        } catch (Exception e) {
+            throw new RuntimeException("Error invoking runAdditionalInfoRules", e);
+        }
+    }
+
+    @Override
+    public String executeStartCase(KieBpmConfig config, String json, String container, String instance) {
+        try {
+            return this.getKieFormManager().executeStartCase(config, json, container, instance);
         } catch (Exception e) {
             throw new RuntimeException("Error invoking executeStartCase", e);
         }
     }
 
     @Override
-    public List<KieProcessInstance> getAllProcessInstancesList() {
+    public List<KieProcessInstance> getAllProcessInstancesList(KieBpmConfig config) {
         try {
-            this.getKieFormManager().loadFirstConfigurations();
-            return this.getKieFormManager().getAllProcessInstancesList(new HashMap<>());
+            return this.getKieFormManager().getAllProcessInstancesList(config, new HashMap<>());
         } catch (Exception e) {
             throw new RuntimeException("Error invoking getAllProcessInstancesList", e);
         }
@@ -77,11 +87,10 @@ public class KieFormService implements IKieFormService {
 
 
     @Override
-    public JSONObject getAllCases(String containerId, String status) {
+    public JSONObject getAllCases(KieBpmConfig config, String containerId, String status) {
 
         try {
-            this.getKieFormManager().loadFirstConfigurations();
-            return this.getKieFormManager().getAllCases(containerId, status);
+            return this.getKieFormManager().getAllCases(config, containerId, status);
         } catch (Exception e) {
             logger.error("failed to fetch cases ", e);
             throw new RuntimeException("Error invoking getAllCases", e);
@@ -89,7 +98,7 @@ public class KieFormService implements IKieFormService {
     }
 
     @Override
-    public JSONArray getAllActiveHumanTasks() {
+    public JSONArray getAllActiveHumanTasks(KieBpmConfig config) {
 
         JSONArray humanTasksJS = new JSONArray();
 
@@ -98,10 +107,7 @@ public class KieFormService implements IKieFormService {
             Map<String, String> headersMap = new HashMap<>();
 
             headersMap.put("status", "Ready");
-
-            this.getKieFormManager().loadFirstConfigurations();
-
-            humanTasks = this.getKieFormManager().getHumanTaskList(null, headersMap);
+            humanTasks = this.getKieFormManager().getHumanTaskList(config, null, headersMap);
 
             //convert to json
 
@@ -129,14 +135,13 @@ public class KieFormService implements IKieFormService {
     }
 
     @Override
-    public String completeTask(String payload, String container, String taskId) {
+    public String completeTask(KieBpmConfig config, String payload, String container, String taskId) {
         String kieResponse = "";
         try {
-            this.getKieFormManager().loadFirstConfigurations();
 
-            this.getKieFormManager().startTask(payload, container, taskId);
-            kieResponse = this.getKieFormManager().submitTask(payload, container, taskId);
-            this.getKieFormManager().completeTask(payload, container, taskId);
+            this.getKieFormManager().startTask(config, payload, container, taskId);
+            kieResponse = this.getKieFormManager().submitTask(config, payload, container, taskId);
+            this.getKieFormManager().completeTask(config, payload, container, taskId);
 
         } catch (Exception e) {
             logger.error("failed to complete task ", e);
@@ -147,13 +152,11 @@ public class KieFormService implements IKieFormService {
     }
 
     @Override
-    public String getTaskDetails(String taskId) {
+    public String getTaskDetails(KieBpmConfig config, String taskId) {
         JSONObject kieResponse = new JSONObject();
 
         try {
-            this.getKieFormManager().loadFirstConfigurations();
-
-            kieResponse = this.getKieFormManager().getTaskDetails(taskId);
+            kieResponse = this.getKieFormManager().getTaskDetails(config, taskId);
 
         } catch (Exception e) {
             logger.error("failed to complete task ", e);
