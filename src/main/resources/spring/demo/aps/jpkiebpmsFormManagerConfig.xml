@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     
     <bean id="jpkiebpmsKieBpmFormService"
-          class="org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.KieFormService">
+          class="com.agiletec.aps.system.services.kie.FsiKieFormService">
         <property name="kieFormManager" ref="jpkiebpmsManager"/>
     </bean>
 
