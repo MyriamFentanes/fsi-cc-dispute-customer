@@ -21,31 +21,32 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
  */
-package org.entando.entando.plugins.jpkiebpm.aps.system.services.kie;
+package com.agiletec.aps.system.services.kie;
 
+import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieBpmConfig;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieProcessInstance;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
-/**
- * @author E.Santoboni
- */
-public interface IKieFormService {
+public interface IFsiKieFormService {
 
-    public String runAdditionalInfoRules(String jsonBody, String instance);
+    public Map<String, KieBpmConfig> getKieServerConfigurations();
 
-    public String executeStartCase(String json, String container, String instance);
+    public String runAdditionalInfoRules(KieBpmConfig config, String jsonBody, String instance);
 
-    public List<KieProcessInstance> getAllProcessInstancesList();
+    public String executeStartCase(KieBpmConfig config, String json, String container, String instance);
 
-    public JSONObject getAllCases(String container, String status);
+    public List<KieProcessInstance> getAllProcessInstancesList(KieBpmConfig config);
+
+    public JSONObject getAllCases(KieBpmConfig config, String container, String status);
     
-    public JSONArray getAllActiveHumanTasks();
+    public JSONArray getAllActiveHumanTasks(KieBpmConfig config);
 
-    public String completeTask(String payload, String container, String taskId);
+    public String completeTask(KieBpmConfig config, String payload, String container, String taskId);
 
-    public String getTaskDetails(String taskId);
+    public String getTaskDetails(KieBpmConfig config, String taskId);
 
 }
