@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -48,6 +49,7 @@ public class FsiKieFormService implements IFsiKieFormService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private IKieFormManager kieFormManager;
+    private CCDKieFormManager ccdKieFormManager;
 
     public Map<String, KieBpmConfig> getKieServerConfigurations() {
 
@@ -91,6 +93,46 @@ public class FsiKieFormService implements IFsiKieFormService {
 
         try {
             return this.getKieFormManager().getAllCases(config, containerId, status);
+        } catch (Exception e) {
+            logger.error("failed to fetch cases ", e);
+            throw new RuntimeException("Error invoking getAllCases", e);
+        }
+    }
+
+    @Override
+    public JSONObject getCaseDetail(KieBpmConfig config, String container, String caseId) {
+        try {
+            return this.getCcdKieFormManager().getCaseInstancesDetails(config, container, caseId);
+        } catch (Exception e) {
+            logger.error("failed to fetch cases ", e);
+            throw new RuntimeException("Error invoking getAllCases", e);
+        }
+    }
+
+    @Override
+    public JSONObject getCaseFile(KieBpmConfig config, String container, String caseId) {
+        try {
+            return this.getCcdKieFormManager().getCaseFile(config, container, caseId);
+        } catch (Exception e) {
+            logger.error("failed to fetch cases ", e);
+            throw new RuntimeException("Error invoking getAllCases", e);
+        }
+    }
+
+    @Override
+    public JSONArray getCaseComment(KieBpmConfig config, String container, String caseId) {
+        try {
+            return this.getCcdKieFormManager().getCaseComments(config, container, caseId);
+        } catch (Exception e) {
+            logger.error("failed to fetch cases ", e);
+            throw new RuntimeException("Error invoking getAllCases", e);
+        }
+    }
+
+    @Override
+    public JSONObject postCaseComment(KieBpmConfig config, String container, String caseId, String input) {
+        try {
+            return this.getCcdKieFormManager().postCaseComments(config, container, caseId, input);
         } catch (Exception e) {
             logger.error("failed to fetch cases ", e);
             throw new RuntimeException("Error invoking getAllCases", e);
@@ -177,4 +219,11 @@ public class FsiKieFormService implements IFsiKieFormService {
         this.kieFormManager = kieFormManager;
     }
 
+    public CCDKieFormManager getCcdKieFormManager() {
+        return ccdKieFormManager;
+    }
+    @Autowired
+    public void setCcdKieFormManager(CCDKieFormManager ccdKieFormManager) {
+        this.ccdKieFormManager = ccdKieFormManager;
+    }
 }

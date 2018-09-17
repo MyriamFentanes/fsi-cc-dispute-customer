@@ -6,6 +6,11 @@
     <bean id="jpkiebpmsKieBpmFormService"
           class="com.agiletec.aps.system.services.kie.FsiKieFormService">
         <property name="kieFormManager" ref="jpkiebpmsManager"/>
+        <!--<property name="ccdKieFormManager" ref="jpkiebpmsCCDKieFormManager"/>-->
+    </bean>
+
+    <bean id="jpkiebpmsCCDKieFormManager"
+          class="com.agiletec.aps.system.services.kie.CCDKieFormManager">
     </bean>
 
 </beans>

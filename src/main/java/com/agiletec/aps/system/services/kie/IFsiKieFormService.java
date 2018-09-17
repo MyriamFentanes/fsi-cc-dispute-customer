@@ -42,6 +42,14 @@ public interface IFsiKieFormService {
     public List<KieProcessInstance> getAllProcessInstancesList(KieBpmConfig config);
 
     public JSONObject getAllCases(KieBpmConfig config, String container, String status);
+
+    public JSONObject getCaseDetail(KieBpmConfig config, String container, String caseId);
+
+    public JSONObject getCaseFile(KieBpmConfig config, String container, String caseId);
+
+    public JSONArray getCaseComment(KieBpmConfig config, String container, String caseId);
+
+    public JSONObject postCaseComment(KieBpmConfig config, String container, String caseId, String input);
     
     public JSONArray getAllActiveHumanTasks(KieBpmConfig config);
 

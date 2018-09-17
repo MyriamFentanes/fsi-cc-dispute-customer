@@ -128,6 +128,69 @@ public class KieFormController {
     }
 
     @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> getCaseDetail(@PathVariable String container, @PathVariable String caseId) {
+
+        logger.info("Get Case details request");
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONObject response = this.getKieFormService().getCaseDetail(config, container, caseId);
+        return response.toMap();
+    }
+
+    @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/file", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> getCaseFile(@PathVariable String container, @PathVariable String caseId) {
+
+        logger.info("Get Case file request");
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONObject response = this.getKieFormService().getCaseFile(config, container, caseId);
+        return response.toMap();
+    }
+
+    @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public JSONArray getCaseComment(@PathVariable String container, @PathVariable String caseId) {
+
+        logger.info("Get Case comments request");
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONArray response = this.getKieFormService().getCaseComment(config, container, caseId);
+        return response;
+    }
+
+    @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> postCaseComment(@PathVariable String container, @PathVariable String caseId, HttpServletRequest request) throws IOException {
+
+        logger.info("Post Case comments request");
+
+        String comment = IOUtils.toString(request.getInputStream());
+        logger.info("Complete task request json {}", comment);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONObject response = this.getKieFormService().postCaseComment(config, container, caseId, comment);
+        return response.toMap();
+    }
+
+    @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getAllTasks() {
 
