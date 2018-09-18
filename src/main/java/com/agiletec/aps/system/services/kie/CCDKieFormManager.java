@@ -101,22 +101,25 @@ public class CCDKieFormManager {
 
     }
 
-    public JSONArray getCaseComments(KieBpmConfig config, String containerId, String caseID) throws ApsSystemException {
+    public JSONObject getCaseComments(KieBpmConfig config, String containerId, String caseID) throws ApsSystemException {
 
-        JSONArray commentsList = null;
-        JSONObject json;
+
+        JSONObject json = null;
         Map<String, String> headersMap = new HashMap<>();
 
         String result;
 
         if (StringUtils.isBlank(containerId) || StringUtils.isBlank(caseID)) {
-            return commentsList;
+//            logger.error("container id or case id is empty "+containerId+ ""+caseID);
+            return json;
         }
         try {
             // process endpoint first
             Endpoint ep = CCDKieEndpointDictionary.create().get(API_GET_COMMENTS_LIST).resolveParams(containerId, caseID);
+            logger.info("endpoint "+ep.getUrl());
             // add header
             headersMap.put(HEADER_KEY_ACCEPT, HEADER_VALUE_JSON);
+            headersMap.put(HEADER_KEY_CONTENT_TYPE, HEADER_VALUE_JSON);
             // generate client from the current configuration
             KieClient client = this.getClient(config);
             // perform query
@@ -128,23 +131,25 @@ public class CCDKieFormManager {
 
             if (!result.isEmpty()) {
                 json = new JSONObject(result);
-                commentsList = (JSONArray) json.get("comments");
-                logger.debug("received successful message: ", result);
+//                commentsList = (JSONArray) json.get("comments");
+                logger.info("received successful message: ", json.toString());
+                logger.info("received successful message: "+json.toString());
+                System.out.println("json.toString() "+json.toString());
 
             } else {
-                logger.debug("received empty case instances message: ");
+                logger.info("received empty case instances message: ");
             }
 
         } catch (Throwable t) {
             throw new ApsSystemException("Error getting the cases list", t);
         }
-        return commentsList;
+        return json;
     }
 
-    public JSONObject postCaseComments(KieBpmConfig config, String containerId, String caseID, String comment) throws ApsSystemException {
+    public String postCaseComments(KieBpmConfig config, String containerId, String caseID, String comment) throws ApsSystemException {
 
         Map<String, String> headersMap = new HashMap<>();
-        JSONObject json = null;
+        String json = null;
 
         if (StringUtils.isBlank(containerId) || StringUtils.isBlank(caseID)) {
             return json;
@@ -170,9 +175,12 @@ public class CCDKieFormManager {
                     .doRequest();
 
             if (!result.isEmpty()) {
-                json = new JSONObject(result);
+//                json = new JSONObject(result);
+                json = result;
 
-                logger.debug("received successful message: ", result);
+                logger.debug("received successful message: ", json);
+                logger.info("received successful message: "+json);
+                System.out.println("json "+json);
 
             } else {
                 logger.debug("received empty case comment message: ");

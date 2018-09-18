@@ -159,7 +159,7 @@ public class KieFormController {
 
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public JSONArray getCaseComment(@PathVariable String container, @PathVariable String caseId) {
+    public  Map<String, Object>  getCaseComment(@PathVariable String container, @PathVariable String caseId) {
 
         logger.info("Get Case comments request");
 
@@ -168,13 +168,14 @@ public class KieFormController {
         Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
         KieBpmConfig config = configs.values().iterator().next();
 
-        JSONArray response = this.getKieFormService().getCaseComment(config, container, caseId);
-        return response;
+        JSONObject response = this.getKieFormService().getCaseComment(config, container, caseId);
+//        logger.info("response"+ response.toString());
+        return response.toMap();
     }
 
     @RestAccessControl(permission = "ignore")
-    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, Object> postCaseComment(@PathVariable String container, @PathVariable String caseId, HttpServletRequest request) throws IOException {
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.POST)
+    public String postCaseComment(@PathVariable String container, @PathVariable String caseId, HttpServletRequest request) throws IOException {
 
         logger.info("Post Case comments request");
 
@@ -186,8 +187,8 @@ public class KieFormController {
         Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
         KieBpmConfig config = configs.values().iterator().next();
 
-        JSONObject response = this.getKieFormService().postCaseComment(config, container, caseId, comment);
-        return response.toMap();
+        String response = this.getKieFormService().postCaseComment(config, container, caseId, comment);
+        return response;
     }
 
     @RestAccessControl(permission = "ignore")

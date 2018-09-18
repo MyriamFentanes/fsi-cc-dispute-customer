@@ -120,7 +120,7 @@ public class FsiKieFormService implements IFsiKieFormService {
     }
 
     @Override
-    public JSONArray getCaseComment(KieBpmConfig config, String container, String caseId) {
+    public JSONObject getCaseComment(KieBpmConfig config, String container, String caseId) {
         try {
             return this.getCcdKieFormManager().getCaseComments(config, container, caseId);
         } catch (Exception e) {
@@ -130,7 +130,7 @@ public class FsiKieFormService implements IFsiKieFormService {
     }
 
     @Override
-    public JSONObject postCaseComment(KieBpmConfig config, String container, String caseId, String input) {
+    public String postCaseComment(KieBpmConfig config, String container, String caseId, String input) {
         try {
             return this.getCcdKieFormManager().postCaseComments(config, container, caseId, input);
         } catch (Exception e) {
