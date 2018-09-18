@@ -23,6 +23,7 @@ public class CCDKieEndpointDictionary {
         endpoints.put(API_GET_COMMENTS_LIST, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/containers/%s/cases/instances/%s/comments", HttpStatus.SC_OK));
         endpoints.put(API_POST_COMMENTS, new Endpoint(IEndpoint.httpVerb.POST, "/services/rest/server/containers/%s/cases/instances/%s/comments", HttpStatus.SC_CREATED, true));
         endpoints.put(API_GET_CASE_FILE, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/containers/%s/cases/instances/%s/caseFile", HttpStatus.SC_OK));
+        endpoints.put(API_GET_ACTIVITY_LOG, new Endpoint(IEndpoint.httpVerb.GET, "/services/rest/server/containers/%s/cases/instances/%s/nodes/instances", HttpStatus.SC_OK));
 
 
     }

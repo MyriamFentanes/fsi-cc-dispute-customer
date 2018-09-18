@@ -19,3 +19,11 @@ INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('workflow
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('workflow_secure',1,'fsi-navbar',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('workflow_secure',2,'fsi-workflow',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('workflow_secure',4,'FSI_Footer',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('test',0,'bpm-case-instance-selector','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="channel">1</property><property key="frontEndCaseData">{"container-id":"credit-dispute-case_1.0-SNAPSHOT","knowledge-source-id":"1"}</property></properties>
+');
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('case_detail_secure',0,'fsi-header',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('case_detail_secure',1,'fsi-navbar',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('case_detail_secure',2,'fsi-case-instance-info',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('case_detail_secure',3,'fsi-ccd-customer-js-activity-log',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('case_detail_secure',4,'FSI_Footer',NULL);

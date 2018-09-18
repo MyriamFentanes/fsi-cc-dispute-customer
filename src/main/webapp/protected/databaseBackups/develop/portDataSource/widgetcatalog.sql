@@ -236,3 +236,9 @@ INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defa
 INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-workflow','<?xml version="1.0" encoding="UTF-8"?>
 <properties><property key="en">FSI Workflow</property><property key="it">FSI Workflow</property></properties>
 ',NULL,NULL,NULL,NULL,0,'free');
+INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-case-instance-info','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">FSI Case Instance Info</property><property key="it">FSI Case Instance Info</property></properties>
+',NULL,NULL,NULL,NULL,0,'free');
+INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-ccd-customer-js-activity-log','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">FSI CASE ACTIVITY LOG</property><property key="it">FSI CASE ACTIVITY LOG</property></properties>
+',NULL,NULL,NULL,NULL,0,'free');

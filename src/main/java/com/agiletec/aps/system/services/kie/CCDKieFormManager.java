@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.agiletec.aps.system.services.CCDKieBpmConstants.API_GET_ACTIVITY_LOG;
 import static org.entando.entando.plugins.jpkiebpm.aps.system.KieBpmSystemConstants.*;
 
 public class CCDKieFormManager {
@@ -190,6 +191,46 @@ public class CCDKieFormManager {
             throw new ApsSystemException("Error posting comments", t);
         }
         return json;
+    }
+
+    public JSONObject getCaseActivityLog(KieBpmConfig config, String containerId, String caseID) throws ApsSystemException {
+
+        JSONObject caseData = null;
+        Map<String, String> headersMap = new HashMap<>();
+
+        String result;
+
+        if (StringUtils.isBlank(containerId) || StringUtils.isBlank(caseID)) {
+            return caseData;
+        }
+        try {
+            // process endpoint first
+            Endpoint ep = CCDKieEndpointDictionary.create().get(API_GET_ACTIVITY_LOG).resolveParams(containerId, caseID);
+            // add header
+            headersMap.put(HEADER_KEY_ACCEPT, HEADER_VALUE_JSON);
+            // generate client from the current configuration
+            KieClient client = this.getClient(config);
+            // perform query
+            result = (String) new KieRequestBuilder(client)
+                    .setEndpoint(ep)
+                    .setHeaders(headersMap)
+                    .setDebug(config.getDebug())
+                    .doRequest();
+
+            if (!result.isEmpty()) {
+                caseData = new JSONObject(result);
+
+                logger.debug("received successful message: ", result);
+
+            } else {
+                logger.debug("received empty case file message: ");
+            }
+
+        } catch (Throwable t) {
+            throw new ApsSystemException("Error getting the cases roles", t);
+        }
+        return caseData;
+
     }
 
     protected KieClient getClient(KieBpmConfig config) {

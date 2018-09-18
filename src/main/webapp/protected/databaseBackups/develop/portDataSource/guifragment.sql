@@ -1993,3 +1993,13 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/css/main.css" rel="stylesheet">
 <div id="fsi-demo-customer-workflow"></div>
 <script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-workflow/static/js/main.js"></script>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-case-instance-info','fsi-case-instance-info',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-case-instance-info/static/css/main.css" rel="stylesheet">
+<div id="fsi-ccd-customer-js-case-instance-info"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-case-instance-info/static/js/main.js"></script>',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-ccd-customer-js-activity-log','fsi-ccd-customer-js-activity-log',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+
+<link rel="stylesheet" href="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-activity-log/static/css/main.css" rel="stylesheet">
+<div id="fsi-ccd-customer-js-activity-log"></div>
+<script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-activity-log/static/js/main.js"></script>',NULL,0);

@@ -62,3 +62,23 @@ INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,
 </config>
 
 ','2018-09-06 16:27:45');
+INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('test','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">test</property><property key="it">test</property></properties>
+','fsi-dashboard-customer',1,'<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <useextratitles>false</useextratitles>
+  <charset>utf-8</charset>
+  <mimeType>text/html</mimeType>
+</config>
+
+','2018-09-17 12:33:41');
+INSERT INTO pages_metadata_online (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('case_detail_secure','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">case_detail_secure</property><property key="it">case_detail_secure</property></properties>
+','fsi-dashboard-customer',1,'<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <useextratitles>false</useextratitles>
+  <charset>utf-8</charset>
+  <mimeType>text/html</mimeType>
+</config>
+
+','2018-09-18 15:48:36');

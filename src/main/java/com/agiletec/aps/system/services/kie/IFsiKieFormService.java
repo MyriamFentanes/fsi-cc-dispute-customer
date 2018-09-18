@@ -49,6 +49,8 @@ public interface IFsiKieFormService {
 
     public JSONObject getCaseComment(KieBpmConfig config, String container, String caseId);
 
+    public JSONObject getCaseActivityLog(KieBpmConfig config, String container, String caseId);
+
     public String postCaseComment(KieBpmConfig config, String container, String caseId, String input);
     
     public JSONArray getAllActiveHumanTasks(KieBpmConfig config);

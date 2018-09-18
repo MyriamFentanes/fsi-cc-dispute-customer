@@ -130,6 +130,16 @@ public class FsiKieFormService implements IFsiKieFormService {
     }
 
     @Override
+    public JSONObject getCaseActivityLog(KieBpmConfig config, String container, String caseId) {
+        try {
+            return this.getCcdKieFormManager().getCaseActivityLog(config, container, caseId);
+        } catch (Exception e) {
+            logger.error("failed to fetch cases ", e);
+            throw new RuntimeException("Error invoking activity log", e);
+        }
+    }
+
+    @Override
     public String postCaseComment(KieBpmConfig config, String container, String caseId, String input) {
         try {
             return this.getCcdKieFormManager().postCaseComments(config, container, caseId, input);

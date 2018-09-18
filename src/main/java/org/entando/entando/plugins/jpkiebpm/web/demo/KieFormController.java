@@ -192,6 +192,21 @@ public class KieFormController {
     }
 
     @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/activitylog", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public  Map<String, Object>  getActivityLog(@PathVariable String container, @PathVariable String caseId) {
+
+        logger.info("Get Case activity log request");
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        JSONObject response = this.getKieFormService().getCaseActivityLog(config, container, caseId);
+        return response.toMap();
+    }
+
+    @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/tasks", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String getAllTasks() {
 

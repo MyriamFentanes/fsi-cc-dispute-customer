@@ -7,3 +7,4 @@ INSERT INTO pages (code,parentcode,pos,groupcode) VALUES ('landing_secure','home
 INSERT INTO pages (code,parentcode,pos,groupcode) VALUES ('home_secure','homepage',3,'bpm_broker');
 INSERT INTO pages (code,parentcode,pos,groupcode) VALUES ('workflow_secure','homepage',4,'bpm_broker');
 INSERT INTO pages (code,parentcode,pos,groupcode) VALUES ('test','homepage',5,'free');
+INSERT INTO pages (code,parentcode,pos,groupcode) VALUES ('case_detail_secure','homepage',6,'bpm_broker');

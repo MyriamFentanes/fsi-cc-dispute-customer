@@ -65,10 +65,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','userProf
 			<attribute name="crntBal" attributetype="Monotext" description="Current Balance" />
 			<attribute name="lstatmentb" attributetype="Monotext" description="Last statement balance" />
 			<attribute name="nxtStmnt" attributetype="Monotext" description="Next statement due" />
-			<attribute name="tranxtn" attributetype="Monotext" description="Transactions" />
-			<attribute name="stateCode" attributetype="Monotext" description="stateCode">
-				<validations />
-			</attribute>
+			<attribute name="stateCode" attributetype="Monotext" description="stateCode" />
 		</attributes>
 	</profiletype>
 	<profiletype typecode="PFL" typedescr="Default user profile">
