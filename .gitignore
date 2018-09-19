@@ -6,3 +6,4 @@ target/
 *.iml
 derby.log
 .DS_STORE
+overlays/
