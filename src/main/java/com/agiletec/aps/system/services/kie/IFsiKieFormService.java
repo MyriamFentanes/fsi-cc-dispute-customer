@@ -55,7 +55,7 @@ public interface IFsiKieFormService {
     
     public JSONArray getAllActiveHumanTasks(KieBpmConfig config);
 
-    public String completeTask(KieBpmConfig config, String payload, String container, String taskId);
+    public String completeTask(KieBpmConfig config, String payload, String container, String caseId, Map<String, String> parm);
 
     public String getTaskDetails(KieBpmConfig config, String taskId);
 

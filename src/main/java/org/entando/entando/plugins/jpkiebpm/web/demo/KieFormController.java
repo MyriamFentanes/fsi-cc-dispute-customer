@@ -220,18 +220,26 @@ public class KieFormController {
     }
 
     @RestAccessControl(permission = "ignore")
-    @RequestMapping(value = "/kiebpm/completetask/{container:.+}/{taskid:.+}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String completeTask(@PathVariable String container, @PathVariable String taskid, HttpServletRequest request) throws IOException {
+    @RequestMapping(value = "/kiebpm/completetask/{container:.+}/{caseId:.+}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String completeTask(@PathVariable String container,
+                               @PathVariable String caseId, HttpServletRequest request,
+                               @RequestParam String page,
+                               @RequestParam String pageSize
+    ) throws IOException {
 
         String json = IOUtils.toString(request.getInputStream());
         logger.info("Complete task request json {}", json);
+
+        Map<String, String> parm = new HashMap<>();
+        parm.put("page", page);
+        parm.put("pageSize", pageSize);
 
         //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
         //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
         Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
         KieBpmConfig config = configs.values().iterator().next();
 
-        String response = this.getKieFormService().completeTask(config, json, container, taskid);
+        String response = this.getKieFormService().completeTask(config, json, container, caseId, parm);
 
         return response;
     }

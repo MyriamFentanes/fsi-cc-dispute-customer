@@ -488,7 +488,12 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-l
         localStorage.setItem("accessToken", "${Session.currentUser.accessToken}");
        //localStorage.setItem("accessToken", "${Session.currentUser}");
         console.log("${Session.currentUser}");
-        console.log(window.location.pathname );
+        console.log(''window ''+ window.location.host );
+        console.log(''window ''+ window.location.hostname );
+        console.log(''window ''+ window.location.href	 );
+        console.log(''window ''+ window.location.origin );
+        console.log(''window ''+ window.location.pathname );
+        console.log(''window ''+ window.location.search );
         </script>
     </head>
     <body>

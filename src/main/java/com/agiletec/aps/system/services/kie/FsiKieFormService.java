@@ -187,9 +187,11 @@ public class FsiKieFormService implements IFsiKieFormService {
     }
 
     @Override
-    public String completeTask(KieBpmConfig config, String payload, String container, String taskId) {
+    public String completeTask(KieBpmConfig config, String payload, String container, String caseId, Map<String, String> parm) {
         String kieResponse = "";
+
         try {
+            String taskId = this.getCcdKieFormManager().getCaseTaskId(config, caseId, parm);
 
             this.getKieFormManager().startTask(config, payload, container, taskId);
             kieResponse = this.getKieFormManager().submitTask(config, payload, container, taskId);
