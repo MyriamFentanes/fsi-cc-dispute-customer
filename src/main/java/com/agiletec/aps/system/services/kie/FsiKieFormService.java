@@ -37,9 +37,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author E.Santoboni
@@ -89,7 +87,7 @@ public class FsiKieFormService implements IFsiKieFormService {
 
 
     @Override
-    public JSONObject getAllCases(KieBpmConfig config, String containerId, String status) {
+    public JSONObject getCases(KieBpmConfig config, String containerId, String status) {
 
         try {
             return this.getKieFormManager().getAllCases(config, containerId, status);
@@ -97,6 +95,38 @@ public class FsiKieFormService implements IFsiKieFormService {
             logger.error("failed to fetch cases ", e);
             throw new RuntimeException("Error invoking getAllCases", e);
         }
+    }
+
+    @Override
+    public JSONObject getAllCases(KieBpmConfig config, String container) {
+
+        JSONObject allCasses = new JSONObject();
+        JSONArray allCassesArray = new JSONArray();
+
+        JSONObject openCases = this.getCases(config, container, "open");
+        JSONArray openCasesInstances = (JSONArray) openCases.getJSONArray("instances");
+
+        JSONObject closedCases = this.getCases(config, container, "closed");
+        JSONArray closedCasesInstances = (JSONArray) closedCases.getJSONArray("instances");
+
+        JSONObject cancelledCases = this.getCases(config, container, "cancelled");
+        JSONArray cancelledCasesInstances = (JSONArray) cancelledCases.getJSONArray("instances");
+
+        for (int i = 0; i < openCasesInstances.length(); i++) {
+            allCassesArray.put(openCasesInstances.get(i));
+        }
+
+        for (int i = 0; i < closedCasesInstances.length(); i++) {
+            allCassesArray.put(closedCasesInstances.get(i));
+        }
+
+        for (int i = 0; i < cancelledCasesInstances.length(); i++) {
+            allCassesArray.put(cancelledCasesInstances.get(i));
+        }
+
+        logger.info("allCassesArray " + allCassesArray.length());
+        allCasses.put("instances", allCassesArray);
+        return allCasses;
     }
 
     @Override
@@ -234,6 +264,7 @@ public class FsiKieFormService implements IFsiKieFormService {
     public CCDKieFormManager getCcdKieFormManager() {
         return ccdKieFormManager;
     }
+
     @Autowired
     public void setCcdKieFormManager(CCDKieFormManager ccdKieFormManager) {
         this.ccdKieFormManager = ccdKieFormManager;
