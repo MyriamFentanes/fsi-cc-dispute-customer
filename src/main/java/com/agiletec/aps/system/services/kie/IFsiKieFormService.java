@@ -28,6 +28,7 @@ import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KiePro
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,9 @@ public interface IFsiKieFormService {
 
     public List<KieProcessInstance> getAllProcessInstancesList(KieBpmConfig config);
 
-    public JSONObject getAllCases(KieBpmConfig config, String container, String status);
+    public JSONObject getCases(KieBpmConfig config, String container, String status);
+
+    public JSONObject getAllCases(KieBpmConfig config, String container);
 
     public JSONObject getCaseDetail(KieBpmConfig config, String container, String caseId);
 

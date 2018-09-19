@@ -26,6 +26,7 @@ package org.entando.entando.plugins.jpkiebpm.web.demo;
 import com.agiletec.aps.system.common.entity.model.attribute.AttributeInterface;
 import com.agiletec.aps.system.services.user.UserDetails;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.entando.entando.aps.system.services.userprofile.model.IUserProfile;
 import com.agiletec.aps.system.services.kie.IFsiKieFormService;
 import org.entando.entando.plugins.jpkiebpm.aps.system.services.kie.model.KieBpmConfig;
@@ -41,6 +42,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -115,15 +117,24 @@ public class KieFormController {
 
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, Object> getAllCases(@PathVariable String container, @RequestParam String status) {
+    public Map<String, Object> getAllCases(@PathVariable String container, @RequestParam(value = "status", required = false) String status) {
 
         logger.info("Get all Cases request");
+        JSONObject response = null;
 
         //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
         //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
         Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
         KieBpmConfig config = configs.values().iterator().next();
-        JSONObject response = this.getKieFormService().getAllCases(config, container, status);
+
+        if (StringUtils.isBlank(status)) {
+            logger.info("getAllCases");
+            response = this.getKieFormService().getAllCases(config, container);
+
+        } else {
+            response = this.getKieFormService().getCases(config, container, status);
+        }
+
         return response.toMap();
     }
 
@@ -159,7 +170,7 @@ public class KieFormController {
 
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  Map<String, Object>  getCaseComment(@PathVariable String container, @PathVariable String caseId) {
+    public Map<String, Object> getCaseComment(@PathVariable String container, @PathVariable String caseId) {
 
         logger.info("Get Case comments request");
 
@@ -193,7 +204,7 @@ public class KieFormController {
 
     @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/activitylog", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  Map<String, Object>  getActivityLog(@PathVariable String container, @PathVariable String caseId) {
+    public Map<String, Object> getActivityLog(@PathVariable String container, @PathVariable String caseId) {
 
         logger.info("Get Case activity log request");
 
@@ -276,7 +287,7 @@ public class KieFormController {
 
             JSONObject userProfile = new JSONObject();
 
-            for (String key: attributes.keySet()) {
+            for (String key : attributes.keySet()) {
 
                 userProfile.put(key, attributes.get(key).getValue().toString());
 
