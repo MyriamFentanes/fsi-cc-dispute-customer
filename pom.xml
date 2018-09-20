@@ -335,7 +335,7 @@
                                 <resource>
                                     <directory>src/main/config/${jboss}</directory>
                                     <includes>
-                                        <include>web.xml</include>
+                                        <include>*web.xml</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
