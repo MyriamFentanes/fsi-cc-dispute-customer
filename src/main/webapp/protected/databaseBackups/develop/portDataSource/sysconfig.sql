@@ -115,6 +115,26 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','imageDim
 </Dimensions>
 ');
 INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','subIndexDir','Name of the sub-directory containing content indexing files','index');
+INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','jpkiebpm_config','KIE-BPM service configuration','<?xml version="1.0" encoding="UTF-8"?>
+<kiaBpmConfigFactory>
+   <kieBpmConfigeMap>
+      <entry>
+         <key>1</key>
+         <value>
+            <active>true</active>
+            <id>1</id>
+            <name>remote</name>
+            <username>kieAdmin</username>
+            <password>kieAdmin!23</password>
+            <hostname>ccd-rhpam701-entando-kieserver.apps.dev.ldcloud.com.au</hostname>
+            <schema>http</schema>
+            <port>80</port>
+            <webapp></webapp>
+         </value>
+      </entry>
+   </kieBpmConfigeMap>
+</kiaBpmConfigFactory>
+');
 INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','entandoComponentsReport','The component installation report','<?xml version="1.0" encoding="UTF-8"?>
 <reports status="OK">
 	<creation>2018-09-13 10:05:53</creation>
