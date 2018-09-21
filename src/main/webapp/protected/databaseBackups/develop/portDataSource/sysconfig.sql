@@ -126,7 +126,7 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','jpkiebpm
             <name>remote</name>
             <username>kieAdmin</username>
             <password>kieAdmin!23</password>
-            <hostname>ccd-rhpam701-auth-kieserver.apps.dev.ldcloud.com.au</hostname>
+            <hostname>ccd-rhpam701-entando-kieserver.apps.dev.ldcloud.com.au</hostname>
             <schema>http</schema>
             <port>80</port>
             <webapp></webapp>
