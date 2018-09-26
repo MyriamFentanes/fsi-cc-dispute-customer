@@ -75,10 +75,10 @@ INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,u
 <config>
   <useextratitles>false</useextratitles>
   <extragroups>
-    <group name="free" />
+    <group name="bpm_broker" />
   </extragroups>
   <charset>utf-8</charset>
   <mimeType>text/html</mimeType>
 </config>
 
-','2018-09-06 15:03:59');
+','2018-09-26 15:39:43');
