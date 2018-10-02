@@ -66,6 +66,12 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','userProf
 			<attribute name="lstatmentb" attributetype="Monotext" description="Last statement balance" />
 			<attribute name="nxtStmnt" attributetype="Monotext" description="Next statement due" />
 			<attribute name="stateCode" attributetype="Monotext" description="stateCode" />
+			<attribute name="accntcrted" attributetype="Monotext" description="accntcrted" />
+			<attribute name="phone" attributetype="Monotext" description="phone" />
+			<attribute name="email" attributetype="Monotext" description="email" />
+			<attribute name="country" attributetype="Monotext" description="country" />
+			<attribute name="jobSector" attributetype="Monotext" description="jobSector" />
+			<attribute name="subIndstry" attributetype="Monotext" description="subIndstry" />
 		</attributes>
 	</profiletype>
 	<profiletype typecode="PFL" typedescr="Default user profile">
