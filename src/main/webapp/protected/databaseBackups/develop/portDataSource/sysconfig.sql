@@ -40,9 +40,9 @@ INSERT INTO sysconfig (version,item,descr,config) VALUES ('production','params',
 		<Param name="resourceArchivesOnDemand">true</Param>
 	</FeaturesOnDemand>
 	<ExtendendPrivacyModule>
-		<Param name="extendedPrivacyModuleEnabled">false</Param>
-		<Param name="maxMonthsSinceLastAccess">6</Param>
-		<Param name="maxMonthsSinceLastPasswordChange">3</Param>
+		<Param name="extendedPrivacyModuleEnabled">true</Param>
+		<Param name="maxMonthsSinceLastAccess">0</Param>
+		<Param name="maxMonthsSinceLastPasswordChange">0</Param>
 	</ExtendendPrivacyModule>
 	<ExtraParams>
 		<Param name="page_preview_hash">lXc2E7rhe70MhRpvU8GN</Param>

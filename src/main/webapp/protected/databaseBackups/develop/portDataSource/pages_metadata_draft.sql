@@ -36,29 +36,6 @@ INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,u
 </config>
 
 ','2018-09-06 16:27:45');
-INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('test','<?xml version="1.0" encoding="UTF-8"?>
-<properties><property key="en">test</property><property key="it">test</property></properties>
-','fsi-dashboard-customer',1,'<?xml version="1.0" encoding="UTF-8"?>
-<config>
-  <useextratitles>false</useextratitles>
-  <charset>utf-8</charset>
-  <mimeType>text/html</mimeType>
-</config>
-
-','2018-09-17 12:33:41');
-INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('home_secure','<?xml version="1.0" encoding="UTF-8"?>
-<properties><property key="en">home-secure</property><property key="it">home-secure</property></properties>
-','fsi-landing',1,'<?xml version="1.0" encoding="UTF-8"?>
-<config>
-  <useextratitles>false</useextratitles>
-  <extragroups>
-    <group name="free" />
-  </extragroups>
-  <charset>utf-8</charset>
-  <mimeType>text/html</mimeType>
-</config>
-
-','2018-09-06 13:14:48');
 INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('case_detail_secure','<?xml version="1.0" encoding="UTF-8"?>
 <properties><property key="en">case_detail_secure</property><property key="it">case_detail_secure</property></properties>
 ','fsi-dashboard-customer',1,'<?xml version="1.0" encoding="UTF-8"?>
@@ -82,3 +59,23 @@ INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,u
 </config>
 
 ','2018-09-26 15:39:43');
+INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('home_secure','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">home-secure</property><property key="it">home-secure</property></properties>
+','fsi-landing',1,'<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <useextratitles>false</useextratitles>
+  <charset>utf-8</charset>
+  <mimeType>text/html</mimeType>
+</config>
+
+','2018-10-02 15:45:47');
+INSERT INTO pages_metadata_draft (code,titles,modelcode,showinmenu,extraconfig,updatedat) VALUES ('login_page','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">Login page</property><property key="it">Login page</property></properties>
+','login',1,'<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <useextratitles>false</useextratitles>
+  <charset>utf-8</charset>
+  <mimeType>text/html</mimeType>
+</config>
+
+','2018-10-03 12:15:18');
