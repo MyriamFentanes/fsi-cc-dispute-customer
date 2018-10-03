@@ -1,8 +1,12 @@
-INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('service','Service Page','<frames>
+INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('service','Service Page','<?xml version="1.0" encoding="UTF-8"?>
+<frames>
 	<frame pos="0">
 		<descr>Sample Frame</descr>
+		<sketch x1="0" y1="0" x2="11" y2="0" />
 	</frame>
-</frames>',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+</frames>
+
+',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
@@ -526,3 +530,91 @@ INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('fsi-l
     </body>
 </html>
 ');
+INSERT INTO pagemodels (code,descr,frames,plugincode,templategui) VALUES ('login','Login Page','<?xml version="1.0" encoding="UTF-8"?>
+<frames>
+	<frame pos="0">
+		<descr>header</descr>
+		<sketch x1="0" y1="0" x2="11" y2="1" />
+	</frame>
+	<frame pos="1">
+		<descr>Leader board</descr>
+		<sketch x1="0" y1="2" x2="11" y2="3" />
+	</frame>
+	<frame pos="2">
+		<descr>content 1</descr>
+		<sketch x1="0" y1="4" x2="3" y2="5" />
+	</frame>
+	<frame pos="3">
+		<descr>content 2</descr>
+		<sketch x1="4" y1="4" x2="7" y2="5" />
+	</frame>
+	<frame pos="4">
+		<descr>content 3</descr>
+		<sketch x1="8" y1="4" x2="11" y2="5" />
+	</frame>
+	<frame pos="5">
+		<descr>footer</descr>
+		<sketch x1="0" y1="6" x2="11" y2="7" />
+	</frame>
+</frames>
+
+',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
+<#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"]>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            CCD Demo
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+               
+        <link rel="icon" href="<@wp.info key="systemParam" paramName="applicationBaseURL" /> favicon.png" type="image/png" />
+              
+              <@c.import url="/WEB-INF/aps/jsp/models/inc/content_inline_editing.jsp" />
+              <@c.import url="/WEB-INF/aps/jsp/models/inc/header-inclusions.jsp" />
+    </head>
+    <body>
+        <div id="wrapper" class="gray-bg" style="min-height: 100%;">
+            <div class="row">
+                <div class="col-md-12">
+                     <@wp.show frame=0 />
+                </div>
+            </div>
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    <div class="col-md-12">
+                         <@wp.show frame=1 />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                         <@wp.show frame=2 />
+                    </div>
+                    <div class="col-md-4">
+                         <@wp.show frame=3 />
+                    </div>
+                    <div class="col-md-4">
+                         <@wp.show frame=4 />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                         <@wp.show frame=5 />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+      <script>
+      document.getElementById("backLink").href="http://" + window.location.host + "/fsi-credit-card-dispute-backoffice/en/admin_home.page";
+
+      $(document).ready(function(){
+       const customerName = ''<b>''+localStorage.getItem(''customerName'')+''</b>'';
+        $("#customerName").html(customerName);
+        });
+      </script>
+</html>');

@@ -242,3 +242,6 @@ INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defa
 INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-ccd-customer-js-activity-log','<?xml version="1.0" encoding="UTF-8"?>
 <properties><property key="en">FSI CASE ACTIVITY LOG</property><property key="it">FSI CASE ACTIVITY LOG</property></properties>
 ',NULL,NULL,NULL,NULL,0,'free');
+INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-login','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">FSI LOGIN</property><property key="it">FSI LOGIN</property></properties>
+',NULL,NULL,NULL,NULL,0,'free');
