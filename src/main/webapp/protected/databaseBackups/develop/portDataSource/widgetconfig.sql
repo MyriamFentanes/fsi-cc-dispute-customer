@@ -18,5 +18,6 @@ INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home_sec
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home_secure',2,'fsi-greeting',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home_secure',3,'home_page_cards',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('home_secure',4,'FSI_Footer',NULL);
+INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('login_page',0,'fsi-header',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('login_page',3,'fsi-login',NULL);
 INSERT INTO widgetconfig (pagecode,framepos,widgetcode,config) VALUES ('login_page',10,'fsi-login',NULL);

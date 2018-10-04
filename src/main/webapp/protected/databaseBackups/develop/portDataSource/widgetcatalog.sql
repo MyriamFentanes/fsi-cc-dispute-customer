@@ -245,3 +245,6 @@ INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defa
 INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-login','<?xml version="1.0" encoding="UTF-8"?>
 <properties><property key="en">FSI LOGIN</property><property key="it">FSI LOGIN</property></properties>
 ',NULL,NULL,NULL,NULL,0,'free');
+INSERT INTO widgetcatalog (code,titles,parameters,plugincode,parenttypecode,defaultconfig,locked,maingroup) VALUES ('fsi-login-header','<?xml version="1.0" encoding="UTF-8"?>
+<properties><property key="en">FSI Login Header</property><property key="it">FSI Login Header</property></properties>
+',NULL,NULL,NULL,NULL,0,'free');

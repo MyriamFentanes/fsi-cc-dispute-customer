@@ -2004,14 +2004,14 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 <div id="fsi-ccd-customer-js-activity-log"></div>
 <script type="text/javascript" src="<@wp.resourceURL />static/react-resources/fsi-ccd-customer-js-activity-log/static/js/main.js"></script>',NULL,0);
 INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-login','fsi-login',NULL,'<#assign wp=JspTaglibs["/aps-core"]>
-          <div class="ibox float-e-margins">
-            <div class="ibox-title bluetop">
-              <h4>Login Form</h4>
+          <div class="ibox float-e-margins" style="width: 300px; height: 400;  margin-left: 150px;">
+            <div class="ibox-title">
+              <h4>CUSTOMER LOGIN</h4>
             </div>
-            <div class="ibox-content" id="main-contents">
+            <div class="ibox-content" >
 
-<div class="text-center">
-<h1><@wp.i18n key="RESERVED_AREA" /></h1>
+<div>
+
 <#if (Session.currentUser.username != "guest") >
 	<p><@wp.i18n key="WELCOME" />, <em>${Session.currentUser}</em>!</p>
 	<#if (Session.currentUser.entandoUser) >
@@ -2055,7 +2055,7 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
 		<p><@wp.i18n key="USER_STATUS_CREDENTIALS_INVALID" /></p>
 	</div>
 	</#if>
-	<form action="<@wp.url/>" method="post" class="form-horizontal margin-medium-top">
+	<form action="<@wp.url/>" method="post" class="form-horizontal margin-medium-top "  >
 		<#if (RequestParameters.returnUrl??) >
 		<input type="hidden" name="returnUrl" value="${RequestParameters.returnUrl}" />
 
@@ -2066,22 +2066,27 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
                 </#if>
 		</#if>
 
-                <div class="control-group">
-			<label for="username" class="control-label"><@wp.i18n key="USERNAME" /></label>
+                <div class="form-group" style="padding: 10px;" >
+			<label for="username">Email/Username</label>
 			<div class="controls">
-				<input id="username" type="text" name="username" class="input-xlarge" />
+				<input id="username" type="text" name="username" class="form-control" />
 			</div>
 		</div>
-		<div class="control-group">
-			<label for="password" class="control-label"><@wp.i18n key="PASSWORD" /></label>
+		<div class="form-group" style="padding: 10px;" >
+			<label for="password">Password</label>
 			<div class="controls">
-				<input id="password" type="password" name="password" class="input-xlarge" />
+				<input id="password" type="password" name="password" class="form-control"  />
 			</div>
 		</div>
+		<label>
+                        <input type="checkbox" name="checkbox" class="i-checks" />
+                                 Remember me
+		</label>
               <br />
-		<div class="form-actions">
-			<input type="submit" value="<@wp.i18n key="SIGNIN" />" class="btn btn-primary" />
+		<div class="form-actions text-center"  style="padding: 10px;" >
+			<input type="submit" value="LOGIN" class="btn btn-primary " />
 		</div>
+                        <a>Forgot your password or Email/Username?</a>
 	</form>
 </#if>
 </div>
@@ -2089,3 +2094,39 @@ INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) V
             </div>
           </div>
 ',NULL,0);
+INSERT INTO guifragment (code,widgettypecode,plugincode,gui,defaultgui,locked) VALUES ('fsi-login-header','fsi-login-header',NULL,'            <div >
+                <nav class="navbar navbar-default" style="border-color:#001D29;">
+                    <div class="container-fluid" style="background-color: #001D29; height: 80px;">
+                        <div class="navbar-header" >
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="navbar-brand" 
+                                style="
+                                    color: #fff;
+                                    margin-left: 260px;
+                                    margin-top: 12px;
+                                    width: 330px;
+                                    display: flex;
+                                    align-items: center;
+                                    ">
+                                <img class="" src="/fsi-credit-card-dispute-customer/resources/static/img/shield-logo.png" />&nbsp;
+                            <b>FORTRESS - Bank Loan</b>
+                            </div>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 500px" >
+                            <ul class="nav navbar-nav" >
+                                <li ><a href="#" style="height: 80px; padding-top: 30px; background-color: #28BBE7; color: #fff">PERSONAL <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" style="height: 80px; padding-top: 30px; color: #fff">SMALL BUSINESS</a></li>
+                                <li><a href="#" style="height: 80px; padding-top: 30px; color: #fff">COMMERCIAL</a></li>
+                                <li><a href="#" style="height: 80px; padding-top: 30px; color: #fff">ENTERPRISE</a></li>
+                                <li style="border-left: 1px solid #28BBE7"><a href="#" style="height: 80px; padding-top: 30px; color: #fff"><i class="fa fa-search fa-lg"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>',NULL,0);
