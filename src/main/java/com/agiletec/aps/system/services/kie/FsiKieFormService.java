@@ -252,6 +252,17 @@ public class FsiKieFormService implements IFsiKieFormService {
         return output;
     }
 
+    @Override
+    public String postCaseAttachment(KieBpmConfig config, String container, String caseId, String caseFile) {
+        try {
+            return this.getCcdKieFormManager().postCaseAttachmemt(config, container, caseId, caseFile);
+        } catch (Exception e) {
+            logger.error("failed to attach file ", e);
+            throw new RuntimeException("Error invoking postCaseAttachment", e);
+        }
+
+    }
+
 
     public IKieFormManager getKieFormManager() {
         return kieFormManager;

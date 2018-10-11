@@ -62,4 +62,6 @@ public interface IFsiKieFormService {
 
     public String getTaskDetails(KieBpmConfig config, String taskId);
 
+    public String postCaseAttachment(KieBpmConfig config, String container, String caseId, String caseFile);
+
 }

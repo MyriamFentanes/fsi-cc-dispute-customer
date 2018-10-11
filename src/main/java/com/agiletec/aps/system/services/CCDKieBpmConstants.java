@@ -4,4 +4,5 @@ public interface CCDKieBpmConstants {
 
     public final static String API_GET_ACTIVITY_LOG = "API_GET_ACTIVITY_LOG";
     public final static String API_GET_CASE_TASK_ID = "API_GET_CASE_TASK_ID";
+    public final static String API_POST_CASE_ATTACH_FILE = "API_POST_CASE_ATTACH_FILE";
 }

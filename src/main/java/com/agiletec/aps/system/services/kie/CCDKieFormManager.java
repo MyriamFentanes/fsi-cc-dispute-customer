@@ -18,6 +18,7 @@ import java.util.Map;
 
 import static com.agiletec.aps.system.services.CCDKieBpmConstants.API_GET_ACTIVITY_LOG;
 import static com.agiletec.aps.system.services.CCDKieBpmConstants.API_GET_CASE_TASK_ID;
+import static com.agiletec.aps.system.services.CCDKieBpmConstants.API_POST_CASE_ATTACH_FILE;
 import static org.entando.entando.plugins.jpkiebpm.aps.system.KieBpmSystemConstants.*;
 
 public class CCDKieFormManager {
@@ -193,7 +194,52 @@ public class CCDKieFormManager {
         }
         return json;
     }
+    public String postCaseAttachmemt(KieBpmConfig config, String containerId, String caseID, String caseFile) throws ApsSystemException {
 
+        Map<String, String> headersMap = new HashMap<>();
+        String json = null;
+
+
+        if (StringUtils.isBlank(containerId) || StringUtils.isBlank(caseID)) {
+            return json;
+        }
+
+        try {
+            // process endpoint first
+            Endpoint ep = CCDKieEndpointDictionary.create().get(API_POST_CASE_ATTACH_FILE).resolveParams(containerId, caseID);
+            // add header
+
+            headersMap.put(HEADER_KEY_ACCEPT, HEADER_VALUE_JSON);
+            headersMap.put(HEADER_KEY_CONTENT_TYPE, HEADER_VALUE_JSON);
+
+            // generate client from the current configuration
+            KieClient client = this.getClient(config);
+
+            // perform query
+            String result = (String) new KieRequestBuilder(client)
+                    .setEndpoint(ep)
+                    .setHeaders(headersMap)
+                    .setPayload(caseFile)
+                    .setDebug(config.getDebug())
+                    .doRequest();
+
+            if (!result.isEmpty()) {
+//                json = new JSONObject(result);
+                json = result;
+
+                logger.debug("received successful message: ", json);
+                logger.info("received successful message: "+json);
+                System.out.println("json "+json);
+
+            } else {
+                logger.debug("received empty case attachment message: ");
+            }
+
+        } catch (Throwable t) {
+            throw new ApsSystemException("Error posting attachment file ", t);
+        }
+        return json;
+    }
     public JSONObject getCaseActivityLog(KieBpmConfig config, String containerId, String caseID) throws ApsSystemException {
 
         JSONObject caseData = null;

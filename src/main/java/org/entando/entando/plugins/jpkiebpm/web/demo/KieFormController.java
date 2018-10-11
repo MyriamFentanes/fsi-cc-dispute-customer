@@ -203,6 +203,24 @@ public class KieFormController {
     }
 
     @RestAccessControl(permission = "ignore")
+    @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/attachment", method = RequestMethod.POST)
+    public String postCaseAttachment(@PathVariable String container, @PathVariable String caseId, HttpServletRequest request) throws IOException {
+
+        logger.info("Post Case comments request");
+
+        String caseAttachment = IOUtils.toString(request.getInputStream());
+//        logger.info("Complete task request json {}", caseAttachment);
+
+        //FIXME The configuration ID used for a partiuclar widget needs to be round tripped so that the right one
+        //can be selected when there are many. For today pick the first one in the interest of moving he demo forward
+        Map<String, KieBpmConfig> configs = this.kieFormService.getKieServerConfigurations();
+        KieBpmConfig config = configs.values().iterator().next();
+
+        String response = this.getKieFormService().postCaseAttachment(config, container, caseId, caseAttachment);
+        return response;
+    }
+
+    @RestAccessControl(permission = "ignore")
     @RequestMapping(value = "/kiebpm/{container:.+}/cases/instances/{caseId:.+}/activitylog", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getActivityLog(@PathVariable String container, @PathVariable String caseId) {
 
